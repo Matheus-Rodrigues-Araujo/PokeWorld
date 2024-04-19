@@ -1,0 +1,21 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --white: #FFFFFF;
+  --custom-red: #EE0D43;
+  --gray: #D7D7D7;
+  --light-gray: #3F3F3F;
+  --lighter-gray: #6F6767;
+  --dark-gray: #262626;
+  --green: #27F793;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  min-height: 100vh;
+  width: 100%;
+}
