@@ -10,7 +10,7 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header style="height: 60px;" >
+  <header class="position-fixed w-100 z-3" style="height: 60px;" >
     <nav class="d-flex justify-content-between px-5 align-items-center">
       <a
         href="/"
