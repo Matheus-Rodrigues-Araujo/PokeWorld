@@ -10,7 +10,7 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header>
+  <header style="height: 60px;" >
     <nav class="d-flex justify-content-between px-5 align-items-center">
       <a
         href="/"
@@ -45,6 +45,12 @@ const toggleSidebar = () => {
 header {
   background-color: var(--custom-red);
 }
+
+nav{
+  max-width: 1300px;
+  margin-inline: auto;
+}
+
 i,
 span {
   font-size: 32px;

@@ -3,7 +3,7 @@
 <template>
   <div
     class="sidebar d-flex flex-column p-3 vh-100 position-fixed end-0 z-1"
-    style="width: 240px"
+    style="width: 240px; top: 60px;"
   >
     <ul class="nav nav-pills flex-column mb-auto">
       <li>

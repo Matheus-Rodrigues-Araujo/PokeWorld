@@ -11,8 +11,10 @@ import PokemonList from "./components/PokemonList.vue";
   <main>
     <SearchInput />
     <AdvancedSearch />
-    <Filters />
-    <PokemonList />
+    <div class="pokedex-content" >
+      <Filters />
+      <PokemonList />
+    </div>
   </main>
 </template>
 
@@ -20,6 +22,12 @@ import PokemonList from "./components/PokemonList.vue";
 main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
+
+.pokedex-content{
+  max-width: 1300px;
+  margin-inline: auto;
+}
+
 </style>

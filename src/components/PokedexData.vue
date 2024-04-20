@@ -1,9 +1,16 @@
 <script setup>
 import Stats from "./Stats.vue";
+
+defineProps({
+  togglePokedexData: {
+    type: Function,
+    required: true
+  }
+})
 </script>
 
 <template>
-  <div class="pokedex-data-container position-fixed top-0 start-0 min-vh-100 w-100">
+  <div class="pokedex-data-container position-fixed top-0  start-0 min-vh-100 w-100">
     <div class="pokedex-data">
       <div
         class="d-flex px-5 justify-content-between align-items-center"
@@ -26,10 +33,10 @@ import Stats from "./Stats.vue";
           </svg>
           <h5 class="text-white fs-5 m-0">PokeData</h5>
         </div>
-        <span class="fs-1" style="cursor: pointer">X</span>
+        <span class="fs-1" style="cursor: pointer" @click="togglePokedexData" >X</span>
       </div>
       <div class="data-wrapper bg-white d-flex flex-column">
-        <div class="d-flex flex-column gap-3 my-3">
+        <div class="d-flex flex-column gap-3 my-3 ">
           <Stats />
         </div>
       </div>
@@ -39,6 +46,13 @@ import Stats from "./Stats.vue";
 <style>
 .pokedex-data-container {
   background-color: rgba(63, 63, 63, 43%);
+}
+
+.data-wrapper{
+  overflow-y: auto;
+  scrollbar-width: none;
+  max-height: calc(100vh - 50px);
+  touch-action: pan-y;
 }
 
 .pokemon img {

@@ -1,8 +1,16 @@
 <script setup>
+import { ref } from 'vue';
 import PokedexData from './PokedexData.vue';
+
+const showPokedexData = ref(false)
+
+const togglePokedexData = () => {
+    showPokedexData.value = !showPokedexData.value
+}
+
 </script>
 <template>
-    <div class="pokemon-card">
+    <div class="pokemon-card" @click="togglePokedexData" >
         <img src="/src/assets/bulbasaur.png" alt="Bulbasaur">
         <div class="card-info py-2 px-2 d-flex justify-content-between align-items-center">
             <h4 class="text-white" >Bulbasaur</h4>
@@ -12,7 +20,7 @@ import PokedexData from './PokedexData.vue';
             </ul>
         </div>
     </div>
-    <PokedexData />
+    <PokedexData v-if="showPokedexData" :togglePokedexData="togglePokedexData" />
 </template>
 <style>
     .pokemon-card{
