@@ -12,6 +12,7 @@ import PokemonList from "./components/PokemonList.vue";
   <main>
     <SearchInput />
     <AdvancedSearch />
+
     <div class="pokedex-content d-flex flex-column justify-content-center" >
       <Filters />
       <PokemonList />

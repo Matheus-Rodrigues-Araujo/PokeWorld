@@ -6,6 +6,14 @@ defineProps({
     type: Function,
     required: true,
   },
+  id: Number,
+  name: String,
+  types: Array,
+  weight: Number,
+  sprites: Array,
+  moves: Array,
+  forms: Array,
+  species: Object,
 });
 </script>
 
@@ -41,7 +49,15 @@ defineProps({
       </div>
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3">
-          <Stats />
+          <Stats
+            :name="name"
+            :weight="weight"
+            :sprites="sprites"
+            :moves="moves"
+            :forms="forms"
+            :species="species"
+            :types="types"
+          />
         </div>
       </div>
     </div>
@@ -68,5 +84,4 @@ defineProps({
   height: auto;
   margin-inline: auto;
 }
-
 </style>
