@@ -13,7 +13,7 @@ defineProps({
   <div class="pokedex-data-container d-flex justify-content-center align-items-center z-3 position-fixed top-0 start-0 min-vh-100 w-100">
     <div class="pokedex-data">
       <div
-        class="d-flex px-5 rounded-top justify-content-between align-items-center"
+        class="d-flex px-2 px-md-5 rounded-top justify-content-between align-items-center"
         style="background-color: var(--custom-red); height: 60px;"
       >
         <div class="d-flex align-items-center py-2 gap-1">

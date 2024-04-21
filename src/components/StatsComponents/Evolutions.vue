@@ -1,7 +1,7 @@
 <template>
-  <div class="evolutions-container px-5 d-flex flex-column">
+  <div class="evolutions-container px-2 px-md-5 d-flex flex-column">
     <h6 class="fs-4">Evolutions</h6>
-    <div class="evolution-list d-flex gap-3">
+    <div class="evolution-list d-flex flex-wrap justify-content-center gap-3">
       <div class="evolution bg-dark rounded-3 d-flex justify-content-center">
         <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
       </div>

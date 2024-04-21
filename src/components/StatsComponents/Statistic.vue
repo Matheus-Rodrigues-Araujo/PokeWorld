@@ -34,7 +34,7 @@ const statList = [
 </script>
 
 <template>
-  <div class="statistic px-5">
+  <div class="statistic px-2 px-md-5">
     <h6 class="fs-4">Stats</h6>
     <ul class="list-unstyled">
       <li
