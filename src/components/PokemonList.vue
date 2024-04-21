@@ -2,6 +2,7 @@
 import { onMounted, reactive } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
+
 const baseURL = "https://pokeapi.co/api/v2/pokemon/";
 
 const pokemonData = reactive({
@@ -37,6 +38,7 @@ const fetchPokemon = async () => {
 
 onMounted(() => {
   fetchPokemon();
+  fetchPokedex()
 });
 </script>
 <template>
