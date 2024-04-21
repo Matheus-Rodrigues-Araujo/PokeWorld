@@ -55,7 +55,7 @@ defineProps({
 .data-wrapper{
   overflow-y: auto;
   scrollbar-width: none;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 120px);
   touch-action: pan-y;
 }
 
