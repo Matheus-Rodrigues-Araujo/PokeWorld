@@ -8,9 +8,9 @@ import Type from "./StatsComponents/Type.vue";
 
 <template>
   <div class="d-flex flex-column gap-3">
-    <div class="px-5">
+    <div class="px-5 w-50 mx-auto">
       <h6 class="fs-4">#001 Bulbasaur</h6>
-      <div class="pokemon-card bg-dark rounded-3">
+      <div class="pokemon-card rounded-3" style="background-color: cyan;" >
         <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
       </div>
     </div>

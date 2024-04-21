@@ -2,8 +2,8 @@
 import PokemonCard from './PokemonCard.vue'
 </script>
 <template>
-    <ul class="pokedex px-5 d-flex my-3 gap-3 flex-wrap">
-        <PokemonCard />
+    <ul class="d-flex flex-wrap px-5 w-100 my-3 gap-3">
+        <PokemonCard  />
         <PokemonCard />
         <PokemonCard />
         <PokemonCard />

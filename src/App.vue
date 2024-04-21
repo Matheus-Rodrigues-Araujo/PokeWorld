@@ -11,7 +11,7 @@ import PokemonList from "./components/PokemonList.vue";
   <main>
     <SearchInput />
     <AdvancedSearch />
-    <div class="pokedex-content" >
+    <div class="pokedex-content d-flex flex-column justify-content-center" >
       <Filters />
       <PokemonList />
     </div>
@@ -26,7 +26,7 @@ main {
 }
 
 .pokedex-content{
-  max-width: 1300px;
+  max-width: 1100px;
   margin-inline: auto;
 }
 

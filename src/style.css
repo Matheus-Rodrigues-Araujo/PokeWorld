@@ -1,12 +1,12 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --white: #FFFFFF;
-  --custom-red: #EE0D43;
-  --gray: #D7D7D7;
-  --light-gray: #3F3F3F;
-  --lighter-gray: #6F6767;
+  --white: #ffffff;
+  --custom-red: #ee0d43;
+  --gray: #d7d7d7;
+  --light-gray: #3f3f3f;
+  --lighter-gray: #6f6767;
   --dark-gray: #262626;
-  --green: #27F793;
+  --green: #27f793;
 }
 
 * {
@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   min-height: 100vh;
   width: 100%;
 }

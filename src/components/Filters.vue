@@ -1,19 +1,19 @@
 <template>
   <div
-    class="d-flex flex-column gap-3 mt-5 justify-content-center w-100 px-5"
+    class="d-flex flex-column flex-md-row gap-3 mt-5 justify-content-center w-100 px-5"
     style="margin-inline: auto"
   >
     <button
-      class="bg-info border-0 p-1 rounded d-flex gap-1 align-items-center text-white fs-5 fw-medium"
+      class="bg-info border-0 p-1 rounded d-flex flex-grow-1 gap-1 justify-content-center align-items-center text-white fs-5 fw-medium"
       style="height: 60px"
     >
       <i class="bi bi-arrow-clockwise"></i>
       Random Pokémon
     </button>
-    <div class="d-flex flex-column" style="color: var(--lighter-gray)">
-      <h3 class="fs-4 fw-normal">Sort By</h3>
+    <div class="d-flex flex-column flex-md-row gap-md-3 flex-grow-1 " style="color: var(--lighter-gray)">
+      <h3 class="fs-5 fw-normal my-md-auto">Sort By</h3>
       <button
-        class="bg-black border-0 p-1 rounded d-flex gap-1 align-items-center text-white w-100 fs-5 fw-medium"
+        class="bg-black border-0 p-1 rounded d-flex gap-1 flex-grow-1 justify-content-center align-items-center text-white fs-5 fw-medium"
         style="height: 60px"
       >
         <svg

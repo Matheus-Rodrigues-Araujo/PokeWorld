@@ -10,7 +10,7 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="position-fixed w-100 z-3" style="height: 60px;" >
+  <header class="position-fixed w-100 z-3" style="height: 60px">
     <nav class="d-flex justify-content-between px-5 align-items-center">
       <a
         href="/"
@@ -38,7 +38,11 @@ const toggleSidebar = () => {
       </div>
     </nav>
   </header>
-  <Sidebar v-if="showSidebar" />
+  <Sidebar
+    v-if="showSidebar"
+    isSidebarVisible="showSidebar"
+    
+  />
 </template>
 
 <style>
@@ -46,8 +50,8 @@ header {
   background-color: var(--custom-red);
 }
 
-nav{
-  max-width: 1300px;
+nav {
+  max-width: 1100px;
   margin-inline: auto;
 }
 

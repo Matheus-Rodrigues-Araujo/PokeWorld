@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <div class="search-input-container">
+  <div class="search-input-container py-5">
     <div class="d-grid gap-1">
       <label for="" class="fs-4 text-white fw-semibold">Name or Number</label>
       <div class="d-flex">

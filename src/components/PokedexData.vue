@@ -10,10 +10,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="pokedex-data-container z-3 position-fixed top-0  start-0 min-vh-100 w-100">
+  <div class="pokedex-data-container d-flex justify-content-center align-items-center z-3 position-fixed top-0 start-0 min-vh-100 w-100">
     <div class="pokedex-data">
       <div
-        class="d-flex px-5 justify-content-between align-items-center"
+        class="d-flex px-5 rounded-top justify-content-between align-items-center"
         style="background-color: var(--custom-red); height: 60px;"
       >
         <div class="d-flex align-items-center py-2 gap-1">
@@ -35,7 +35,7 @@ defineProps({
         </div>
         <span class="fs-1" style="cursor: pointer" @click="togglePokedexData" >X</span>
       </div>
-      <div class="data-wrapper bg-white d-flex flex-column">
+      <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3 ">
           <Stats />
         </div>
@@ -48,10 +48,14 @@ defineProps({
   background-color: rgba(63, 63, 63, 43%);
 }
 
+.pokedex-data{
+  max-width: 600px;
+}
+
 .data-wrapper{
   overflow-y: auto;
   scrollbar-width: none;
-  max-height: calc(100vh - 50px);
+  max-height: calc(100vh - 100px);
   touch-action: pan-y;
 }
 

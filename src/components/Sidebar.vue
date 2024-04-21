@@ -1,10 +1,13 @@
-<script setup></script>
+<script setup>
+defineProps({
+  isSidebarVisible: Boolean,
+});
+</script>
 
 <template>
   <div
     class="sidebar d-flex flex-column p-3 vh-100 position-fixed end-0 z-1"
-    style="width: 240px; top: 60px;"
-  >
+    >
     <ul class="nav nav-pills flex-column mb-auto">
       <li>
         <a href="#" class="nav-link text-white">
@@ -22,7 +25,7 @@
         <i class="bi bi-globe-americas text-white"></i>
         <label for="selectLanguage">
           <select id="selectLanguage">
-            <option value="pt-br" >Português (Brasil)</option>
+            <option value="pt-br">Português (Brasil)</option>
             <option value="en">English</option>
             <option value="es">Spanish</option>
           </select>
@@ -33,22 +36,28 @@
 </template>
 
 <style scoped>
-    .sidebar {
-        background-color: black;
-        transition: 0.3s ease;
-    }
-    select{
-        background-color: black;
-        color: white;
-        border: none;
-    }
+.sidebar {
+  background-color: black;
+  transition: 2s ease-in-out;
+  width: 280px;
+  top: 60px;
+  position: fixed;
+  right: 0;
+}
 
-    option{
-        background-color: var(--light-gray);
-        color: white;
-    }
 
-    i {
-        font-size: 20px;
-    }
+select {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+option {
+  background-color: var(--light-gray);
+  color: white;
+}
+
+i {
+  font-size: 20px;
+}
 </style>
