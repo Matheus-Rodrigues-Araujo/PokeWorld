@@ -45,7 +45,7 @@ defineProps({
 </template>
 <style>
 .pokedex-data-container {
-  background-color: rgba(63, 63, 63, 43%);
+  background-color: rgb(0 0 0 / 43%);
 }
 
 .pokedex-data{

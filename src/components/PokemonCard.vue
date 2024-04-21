@@ -14,7 +14,7 @@ const togglePokedexData = () => {
     @click="togglePokedexData"
     style="cursor: pointer"
   >
-  <div class="position-absolute fs-5 left-2 p-1 bg-dark text-white" style="border-bottom-right-radius: 5px;" >#001</div>
+  <div class="position-absolute fs-5 left-2 p-1 bg-dark text-white" style="border-bottom-right-radius: 5px; border-top-left-radius: 4px;" >#001</div>
     <div class="pokemon-img rounded-top d-flex justify-content">
       <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
     </div>

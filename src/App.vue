@@ -2,6 +2,7 @@
 import AdvancedSearch from "./components/AdvancedSearch.vue";
 import Filters from "./components/Filters.vue";
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 import SearchInput from "./components/SearchInput.vue";
 import PokemonList from "./components/PokemonList.vue";
 </script>
@@ -16,6 +17,7 @@ import PokemonList from "./components/PokemonList.vue";
       <PokemonList />
     </div>
   </main>
+  <Footer />
 </template>
 
 <style scoped>
