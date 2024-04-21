@@ -1,17 +1,17 @@
 <template>
   <div class="evolutions-container px-2 px-md-5 d-flex flex-column">
     <h6 class="fs-4">Evolutions</h6>
-    <div class="evolution-list d-flex flex-wrap justify-content-center gap-3">
-      <div class="evolution bg-dark rounded-3 d-flex justify-content-center">
-        <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
+    <div class="evolution-list d-flex flex-wrap justify-content-between gap-3">
+      <div class="evolution d-flex justify-content-center">
+        <img class="rounded" src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
       </div>
 
-      <div class="evolution bg-dark rounded-3 d-flex justify-content-center">
-        <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
+      <div class="evolution d-flex justify-content-center">
+        <img class="rounded" src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
       </div>
 
-      <div class="evolution bg-dark rounded-3 d-flex justify-content-center">
-        <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
+      <div class="evolution d-flex justify-content-center">
+        <img class="rounded" src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
       </div>
     </div>
   </div>
@@ -19,7 +19,6 @@
 
 <style>
 .evolution {
-  flex: 1;
   cursor: pointer;
 }
 
@@ -27,6 +26,7 @@
 .evolution img {
   max-width: 120px;
   height: auto;
+  background-color: var(--gray);
 }
 
 .evolution:hover {
