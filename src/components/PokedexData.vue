@@ -4,17 +4,19 @@ import Stats from "./Stats.vue";
 defineProps({
   togglePokedexData: {
     type: Function,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 </script>
 
 <template>
-  <div class="pokedex-data-container d-flex justify-content-center align-items-md-center z-3 position-fixed top-0 start-0 min-vh-100 w-100">
+  <div
+    class="pokedex-data-container d-flex justify-content-center align-items-md-center z-3 position-fixed top-0 start-0 min-vh-100 w-100"
+  >
     <div class="pokedex-data">
       <div
         class="d-flex px-2 px-md-5 rounded-top justify-content-between align-items-center"
-        style="background-color: var(--custom-red); height: 60px;"
+        style="background-color: var(--custom-red); height: 60px"
       >
         <div class="d-flex align-items-center py-2 gap-1">
           <svg
@@ -33,10 +35,12 @@ defineProps({
           </svg>
           <h5 class="text-white fs-3 m-0 text-white fs-3 fw-bold">POKÉDATA</h5>
         </div>
-        <span class="fs-1" style="cursor: pointer" @click="togglePokedexData" >X</span>
+        <span class="fs-1" style="cursor: pointer" @click="togglePokedexData"
+          >X</span
+        >
       </div>
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
-        <div class="d-flex flex-column gap-3 my-3 ">
+        <div class="d-flex flex-column gap-3 my-3">
           <Stats />
         </div>
       </div>
@@ -48,11 +52,11 @@ defineProps({
   background-color: rgb(0 0 0 / 43%);
 }
 
-.pokedex-data{
+.pokedex-data {
   max-width: 600px;
 }
 
-.data-wrapper{
+.data-wrapper {
   overflow-y: auto;
   scrollbar-width: none;
   max-height: calc(100vh - 120px);
@@ -64,4 +68,5 @@ defineProps({
   height: auto;
   margin-inline: auto;
 }
+
 </style>
