@@ -2,30 +2,33 @@
 import axios from "axios";
 import PokemonModal from "./PokemonModal.vue";
 import Loading from "./Loading.vue";
-import { onMounted, reactive, ref } from "vue";
+import { inject, onMounted, reactive, ref } from "vue";
+
 const props = defineProps({
-  url: String,
+  name: String,
 });
 
 const showPokedexData = ref(false);
 const pokemon = reactive({});
-const isLoading = ref(true)
-
+const isLoading = ref(true);
+const pokemonsList = inject("pokemonsList");
 onMounted(() => {
   fetchPokemon();
 });
 
 const fetchPokemon = async () => {
-  isLoading.value = true
+  isLoading.value = true;
   try {
-    const response = await axios.get(props.url);
+    const response = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${props.name}/`
+    );
     const data = await response.data;
     pokemon.value = data;
+    pokemonsList.value.push(pokemon.value);
   } catch (error) {
     console.error("Erro ao buscar dados do Pokémon:", error);
-  } 
-  finally {
-    isLoading.value = false
+  } finally {
+    isLoading.value = false;
   }
 };
 
@@ -37,11 +40,12 @@ const togglePokedexData = () => {
 
 <template>
   <Loading v-if="isLoading && !pokemon.value?.name" />
-  <div v-else class="pokemon-card flex-grow-1 d-flex flex-column" @click="togglePokedexData" style="cursor: pointer">
-    <div
-      class="position-absolute fs-5 left-2 p-1 bg-dark text-white"
-      style="border-bottom-right-radius: 5px; border-top-left-radius: 4px"
-    >
+  <div
+    v-else
+    class="pokemon-card flex-grow-1 d-flex flex-column"
+    @click="togglePokedexData"
+  >
+    <div class="pokemon-id position-absolute fs-5 left-2 p-1 bg-dark text-white">
       #{{
         pokemon.value?.id < 10
           ? "00" + pokemon.value?.id
@@ -84,6 +88,15 @@ const togglePokedexData = () => {
 <style>
 .no-scroll {
   overflow-y: hidden;
+}
+
+.pokemon-id {
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 4px;
+}
+
+.pokemon-card{
+  cursor: pointer;
 }
 
 .pokemon-card:hover {

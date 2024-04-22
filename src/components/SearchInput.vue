@@ -1,10 +1,19 @@
-<script setup></script>
+<script setup>
+import { inject } from "vue";
+
+const searchValue = inject('searchValue')
+
+const handleInputChange = (e) => {
+  searchValue.value = e.target.value
+};
+
+</script>
 <template>
   <div class="search-input-container py-5">
     <div class="d-grid gap-1">
       <label for="" class="fs-4 text-white fw-semibold">Name or Number</label>
       <div class="d-flex">
-        <input type="text" name="" id="" style="border-color: none" />
+        <input type="text" @input="handleInputChange" autocomplete="off" />
         <button
           class="text-white"
           style="
@@ -43,5 +52,6 @@ input {
   padding: 5px;
   border-top-left-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
+  border-color: none;
 }
 </style>

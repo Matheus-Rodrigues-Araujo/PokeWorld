@@ -1,10 +1,18 @@
 <script setup>
+import { provide, ref } from "vue";
 import AdvancedSearch from "./components/AdvancedSearch.vue";
 import Filters from "./components/Filters.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import SearchInput from "./components/SearchInput.vue";
 import PokemonList from "./components/PokemonList.vue";
+
+const searchValue = ref('')
+const pokemonsList = ref([])
+
+provide('searchValue', searchValue )
+provide('pokemonsList', pokemonsList )
+
 </script>
 
 <template>
@@ -12,7 +20,6 @@ import PokemonList from "./components/PokemonList.vue";
   <main>
     <SearchInput />
     <AdvancedSearch />
-
     <div class="pokedex-content d-flex flex-column justify-content-center" >
       <Filters />
       <PokemonList />

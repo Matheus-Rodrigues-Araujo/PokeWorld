@@ -1,34 +1,53 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { inject, onMounted, ref, watchEffect } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
 const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=700";
 
-const pokemonList = ref([]);
+const searchValue = inject("searchValue");
+const pokemonsList = inject("pokemonsList");
+const pokemonArray = ref([]);
 
-const fetchPokemonList = async () => {
+const fetchPokemonArray = async (url) => {
   try {
-    const response = await axios.get(baseURL);
+    const response = await axios.get(url);
     const data = await response.data;
-    pokemonList.value = data.results;
+    pokemonArray.value = data.results;
   } catch (error) {
     console.error("error", error);
   }
 };
 
+watchEffect(() => {
+  if (searchValue.value.length > 2) {
+    const filtered = pokemonsList.value.filter(
+      (pokemon) =>
+        pokemon.name.includes(searchValue.value.toLowerCase()) ||
+        pokemon.id.toString() === searchValue.value
+    );
+
+    const uniqueFiltered = [
+      ...new Set(filtered.map((pokemon) => pokemon.name)),
+    ].map((name) => filtered.find((pokemon) => pokemon.name === name));
+    pokemonArray.value = uniqueFiltered;
+  } else {
+    fetchPokemonArray(baseURL);
+  }
+});
+
 onMounted(() => {
-  fetchPokemonList();
+  fetchPokemonArray(baseURL);
 });
 </script>
 <template>
   <ul
-    v-if="pokemonList.length > 0"
+    v-if="pokemonArray.length > 0"
     class="pokemon-list px-5 w-100 my-3 gap-3 list-unstyled"
   >
     <PokemonCard
-      v-for="pokemon in pokemonList"
+      v-for="pokemon in pokemonArray"
       :key="pokemon.name"
-      :url="pokemon.url"
+      :name="pokemon.name"
     />
   </ul>
 </template>
