@@ -14,8 +14,9 @@ const fetchPokemonArray = async (url) => {
     isLoading.value = true;
     const response = await axios.get(url);
     const data = await response.data;
-    pokemonArray.value = [...pokemonArray.value, ...data.results];
-    offset += 20; // Atualizando o offset para a próxima página
+    pokemonArray.value = data.results;
+    console.log(pokemonArray);
+    offset += 20;
     isLoading.value = false;
   } catch (error) {
     console.error("error", error);
@@ -41,7 +42,9 @@ watchEffect(() => {
 });
 
 onMounted(() => {
-  fetchPokemonArray(baseURL);
+  if (offset <= 10000) {
+    fetchPokemonArray(baseURL);
+  }
 });
 
 const handleScroll = () => {
@@ -50,7 +53,7 @@ const handleScroll = () => {
 
   if (scrollPosition >= totalHeight && !isLoading.value) {
     fetchPokemonArray(
-      `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${offset}&offset=0`
     );
   }
 };
@@ -71,7 +74,13 @@ onUnmounted(() => {
       :key="pokemon.name"
       :name="pokemon.name"
     />
-    <div v-if="isLoading" class="loading-indicator">Carregando...</div>
+    <div
+      v-if="isLoading"
+      class="loading-indicator fs-4"
+      style="color: var(--custom-red)"
+    >
+      Loading...
+    </div>
   </ul>
 </template>
 <style>
