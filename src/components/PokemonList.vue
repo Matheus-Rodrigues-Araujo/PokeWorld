@@ -2,8 +2,8 @@
 import { onMounted, reactive } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
-
 const baseURL = "https://pokeapi.co/api/v2/pokemon/";
+
 
 const pokemonData = reactive({
   id: 0,
@@ -38,8 +38,8 @@ const fetchPokemon = async () => {
 
 onMounted(() => {
   fetchPokemon();
-  fetchPokedex()
 });
+
 </script>
 <template>
  <div v-if="pokemonData.name">
