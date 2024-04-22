@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
 const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=700";
+
 const pokemonList = ref([]);
 
 const fetchPokemonList = async () => {
@@ -32,22 +33,21 @@ onMounted(() => {
   </ul>
 </template>
 <style>
-.pokemon-list{
+.pokemon-list {
   display: grid;
-  grid-template-columns: repeat(3,320px);
+  grid-template-columns: repeat(3, 320px);
   max-width: 1100px;
 }
 
 @media screen and (max-width: 1020px) {
-  .pokemon-list{
-    grid-template-columns: repeat(2,320fr);
+  .pokemon-list {
+    grid-template-columns: repeat(2, 320fr);
   }
 }
 
 @media screen and (max-width: 700px) {
-  .pokemon-list{
-    grid-template-columns: repeat(1,1fr);
+  .pokemon-list {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
-
 </style>

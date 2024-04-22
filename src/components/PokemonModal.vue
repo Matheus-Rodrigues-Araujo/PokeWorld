@@ -1,18 +1,17 @@
 <script setup>
-import Stats from "./Stats.vue";
-
+import PokemonModalData from "./PokemonModalData.vue";
 defineProps({
   togglePokedexData: {
     type: Function,
     required: true,
   },
-  pokemon: Object
+  pokemon: Object,
 });
 </script>
 
 <template>
   <div
-    class="pokedex-data-container d-flex justify-content-center align-items-md-center z-3 position-fixed top-0 start-0 min-vh-100 w-100"
+    class="pokedex-data-container d-flex justify-content-center align-items-center z-3 position-fixed top-0 start-0 w-100"
   >
     <div class="pokedex-data">
       <div
@@ -42,7 +41,7 @@ defineProps({
       </div>
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3">
-          <Stats :pokemon="pokemon" />
+          <PokemonModalData :pokemon="pokemon" />
         </div>
       </div>
     </div>
@@ -51,16 +50,17 @@ defineProps({
 <style>
 .pokedex-data-container {
   background-color: rgb(0 0 0 / 43%);
+  height: 100vh;
 }
 
 .pokedex-data {
-  max-width: 600px;
+  max-width: 400px;
 }
 
 .data-wrapper {
   overflow-y: auto;
   scrollbar-width: none;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 100px);
   touch-action: pan-y;
 }
 

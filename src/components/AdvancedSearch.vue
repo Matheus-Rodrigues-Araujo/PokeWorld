@@ -17,8 +17,7 @@
   position: absolute;
   width: 280px;
   border-radius: 3rem;
-  /* border-bottom-left-radius: 3rem; */
-  /* border-bottom-right-radius: 3rem; */
+
   left: 50%;
   bottom: -15px;
   padding: 5px 20px;

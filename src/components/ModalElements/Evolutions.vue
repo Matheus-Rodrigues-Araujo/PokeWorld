@@ -1,7 +1,7 @@
 <template>
-  <div class="evolutions-container px-2 px-md-5 d-flex flex-column">
+  <div class="evolutions-container px-2 px-md-5 d-flex flex-column  align-items-center">
     <h6 class="fs-4">Evolutions</h6>
-    <div class="evolution-list d-flex flex-wrap justify-content-between gap-3">
+    <div class="evolution-list d-flex flex-wrap gap-3">
       <div class="evolution d-flex justify-content-center">
         <img class="rounded" src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
       </div>
@@ -22,9 +22,8 @@
   cursor: pointer;
 }
 
-
 .evolution img {
-  max-width: 120px;
+  max-width: 80px;
   height: auto;
   background-color: var(--gray);
 }

@@ -12,7 +12,8 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vue-styled-components": "^1.6.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

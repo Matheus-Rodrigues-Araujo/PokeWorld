@@ -1,5 +1,5 @@
 <template>
-  <div class="moves px-2 px-md-5 d-flex flex-column">
+  <div class="moves px-2 px-md-5 d-flex flex-column  align-items-center">
     <h6 class="fs-4">Type</h6>
     <ul class="list-unstyled d-flex gap-1">
       <li class="type text-white rounded-1 px-2 fs-5 fw-medium bg-success">
