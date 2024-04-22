@@ -43,12 +43,17 @@ const togglePokedexData = () => {
       #{{
         pokemon.value?.id < 10
           ? "00" + pokemon.value?.id
-          :pokemon.value?.id < 100 ? "0" + pokemon.value?.id
+          : pokemon.value?.id < 100
+          ? "0" + pokemon.value?.id
           : pokemon.value?.id
       }}
     </div>
     <div class="pokemon-img rounded-top d-flex justify-content">
-      <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
+      <img
+        :src="pokemon.value?.sprites.other['official-artwork'].front_default"
+        :alt="pokemon.value?.name"
+        :title="pokemon.value?.name"
+      />
     </div>
     <div
       class="rounded-bottom card-info py-2 px-2 d-flex justify-content-between align-items-center"
@@ -70,6 +75,7 @@ const togglePokedexData = () => {
   <PokedexData
     v-if="showPokedexData"
     :togglePokedexData="togglePokedexData"
+    :pokemon="pokemon.value"
     to
   />
 </template>

@@ -6,6 +6,7 @@ defineProps({
     type: Function,
     required: true,
   },
+  pokemon: Object
 });
 </script>
 
@@ -41,9 +42,7 @@ defineProps({
       </div>
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3">
-          <Stats
-         
-          />
+          <Stats :pokemon="pokemon" />
         </div>
       </div>
     </div>
