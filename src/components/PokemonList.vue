@@ -1,60 +1,53 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onMounted, ref } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
-const baseURL = "https://pokeapi.co/api/v2/pokemon/";
+const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=700";
+const pokemonList = ref([]);
 
-
-const pokemonData = reactive({
-  id: 0,
-  name: '',
-  types: [],
-  weight: 0,
-  sprites: [],
-  moves: [],
-  forms: [],
-  species: {},
-});
-
-const fetchPokemon = async () => {
+const fetchPokemonList = async () => {
   try {
-    const res = await axios.get(`${baseURL}/2`);
-    const data = await res.data;
-
-    pokemonData.id = data.id
-    pokemonData.name = data.name
-    pokemonData.types = data.types
-    pokemonData.weight = data.weight
-    pokemonData.sprites = data.sprites
-    pokemonData.moves = data.moves
-    pokemonData.forms = data.forms
-    pokemonData.species = data.species
-
-    console.log(pokemonData.types)
+    const response = await axios.get(baseURL);
+    const data = await response.data;
+    pokemonList.value = data.results;
   } catch (error) {
     console.error("error", error);
   }
 };
 
 onMounted(() => {
-  fetchPokemon();
+  fetchPokemonList();
 });
-
 </script>
 <template>
- <div v-if="pokemonData.name">
-    <ul class="d-flex flex-wrap px-5 w-100 my-3 gap-3">
-      <PokemonCard
-        :id="pokemonData.id"
-        :name="pokemonData.name"
-        :weight="pokemonData.weight"
-        :sprites="pokemonData.sprites"
-        :moves="pokemonData.moves"
-        :forms="pokemonData.forms"
-        :species="pokemonData.species"
-        :types="pokemonData.types"
-      />
-      
-    </ul>
-  </div>
+  <ul
+    v-if="pokemonList.length > 0"
+    class="pokemon-list px-5 w-100 my-3 gap-3 list-unstyled"
+  >
+    <PokemonCard
+      v-for="pokemon in pokemonList"
+      :key="pokemon.name"
+      :url="pokemon.url"
+    />
+  </ul>
 </template>
+<style>
+.pokemon-list{
+  display: grid;
+  grid-template-columns: repeat(3,320px);
+  max-width: 1100px;
+}
+
+@media screen and (max-width: 1020px) {
+  .pokemon-list{
+    grid-template-columns: repeat(2,320fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .pokemon-list{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+
+</style>

@@ -1,19 +1,29 @@
 <script setup>
+import axios from "axios";
 import PokedexData from "./PokedexData.vue";
-import { ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 
-defineProps({
-  id: Number,
-  name: String,
-  types: Array,
-  weight: Number,
-  sprites: Array,
-  moves: Array,
-  forms: Array,
-  species: Object,
+const props = defineProps({
+  url: String,
 });
 
 const showPokedexData = ref(false);
+const pokemon = reactive({});
+
+onMounted(() => {
+  fetchPokemon();
+});
+
+const fetchPokemon = async () => {
+  try {
+    const response = await axios.get(props.url);
+    const data = await response.data
+    pokemon.value = data;
+  } catch (error) {
+    console.error("Erro ao buscar dados do Pokémon:", error);
+  }
+};
+
 const togglePokedexData = () => {
   showPokedexData.value = !showPokedexData.value;
   document.body.classList.toggle("no-scroll");
@@ -30,18 +40,15 @@ const togglePokedexData = () => {
       class="position-absolute fs-5 left-2 p-1 bg-dark text-white"
       style="border-bottom-right-radius: 5px; border-top-left-radius: 4px"
     >
-      #{{ id }}
+    #{{ pokemon.value?.id }}
     </div>
     <div class="pokemon-img rounded-top d-flex justify-content">
-      <img
-        :src="sprites.other['official-artwork'].front_default"
-        alt="Bulbasaur"
-      />
+      <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
     </div>
     <div
       class="rounded-bottom card-info py-2 px-2 d-flex justify-content-between align-items-center"
     >
-      <h4 class="text-white text-capitalize">{{ name }}</h4>
+      <h4 class="text-white text-capitalize">{{ pokemon.value?.name }}</h4>
       <ul class="list-unstyled d-flex gap-1">
         <li class="type text-white rounded-1 px-2 fs-5 fw-medium bg-success">
           Grass
@@ -58,13 +65,7 @@ const togglePokedexData = () => {
   <PokedexData
     v-if="showPokedexData"
     :togglePokedexData="togglePokedexData"
-    :name="name"
-    :weight="weight"
-    :sprites="sprites"
-    :moves="moves"
-    :forms="forms"
-    :species="species"
-    :types="types"
+    to
   />
 </template>
 <style>
@@ -82,9 +83,10 @@ const togglePokedexData = () => {
 }
 
 .pokemon-card img {
-  max-width: 215px;
+  /* max-width: 215px;
   max-height: 215px;
-  min-width: 180px;
+  min-width: 180px; */
+  max-width: 100%;
   margin-inline: auto;
 }
 

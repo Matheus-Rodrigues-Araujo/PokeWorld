@@ -5,16 +5,16 @@ import Weakness from "./StatsComponents/Weakness.vue";
 import Moves from "./StatsComponents/Moves.vue";
 import Type from "./StatsComponents/Type.vue";
 
-defineProps({
-  id: Number,
-  name: String,
-  types: Array,
-  weight: Number,
-  sprites: Array,
-  moves: Array,
-  forms: Array,
-  species: Object,
-});
+// defineProps({
+//   id: Number,
+//   name: String,
+//   types: Array,
+//   weight: Number,
+//   sprites: Array,
+//   moves: Array,
+//   forms: Array,
+//   species: Object,
+// });
 </script>
 
 <template>
@@ -23,9 +23,7 @@ defineProps({
       <h6 class="fs-4 text-capitalize">{{ name }}</h6>
       <div class="pokemon-card rounded-3">
         <img
-          :src="sprites.other['official-artwork'].front_default"
-          :alt="name"
-          :title="name"
+          src="/src/assets/bulbasaur.png"
           style="background-color: cyan"
           class="rounded"
         />
