@@ -17,7 +17,7 @@ onMounted(() => {
 const fetchPokemon = async () => {
   try {
     const response = await axios.get(props.url);
-    const data = await response.data
+    const data = await response.data;
     pokemon.value = data;
   } catch (error) {
     console.error("Erro ao buscar dados do Pokémon:", error);
@@ -40,7 +40,12 @@ const togglePokedexData = () => {
       class="position-absolute fs-5 left-2 p-1 bg-dark text-white"
       style="border-bottom-right-radius: 5px; border-top-left-radius: 4px"
     >
-    #{{ pokemon.value?.id }}
+      #{{
+        pokemon.value?.id < 10
+          ? "00" + pokemon.value?.id
+          :pokemon.value?.id < 100 ? "0" + pokemon.value?.id
+          : pokemon.value?.id
+      }}
     </div>
     <div class="pokemon-img rounded-top d-flex justify-content">
       <img src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
