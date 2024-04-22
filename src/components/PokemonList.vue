@@ -1,20 +1,25 @@
 <script setup>
-import { inject, onMounted, ref, watchEffect } from "vue";
+import { inject, onMounted, onUnmounted, ref, watchEffect } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
-const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=700";
-
+const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0";
 const searchValue = inject("searchValue");
 const pokemonsList = inject("pokemonsList");
 const pokemonArray = ref([]);
+const isLoading = ref(false);
+let offset = 20;
 
 const fetchPokemonArray = async (url) => {
   try {
+    isLoading.value = true;
     const response = await axios.get(url);
     const data = await response.data;
-    pokemonArray.value = data.results;
+    pokemonArray.value = [...pokemonArray.value, ...data.results];
+    offset += 20; // Atualizando o offset para a próxima página
+    isLoading.value = false;
   } catch (error) {
     console.error("error", error);
+    isLoading.value = false;
   }
 };
 
@@ -38,6 +43,23 @@ watchEffect(() => {
 onMounted(() => {
   fetchPokemonArray(baseURL);
 });
+
+const handleScroll = () => {
+  const scrollPosition = window.scrollY + window.innerHeight;
+  const totalHeight = document.documentElement.scrollHeight;
+
+  if (scrollPosition >= totalHeight && !isLoading.value) {
+    fetchPokemonArray(
+      `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
+    );
+  }
+};
+
+window.addEventListener("scroll", handleScroll);
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 <template>
   <ul
@@ -49,6 +71,7 @@ onMounted(() => {
       :key="pokemon.name"
       :name="pokemon.name"
     />
+    <div v-if="isLoading" class="loading-indicator">Carregando...</div>
   </ul>
 </template>
 <style>
