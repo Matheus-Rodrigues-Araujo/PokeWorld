@@ -13,8 +13,8 @@ defineProps({
 
 <template>
   <div class="d-flex flex-column gap-3">
-    <MainSprite :name="pokemon.name" :img="pokemon?.sprites" />
-    <Evolutions />
+    <MainSprite :name="pokemon.name" :sprites="pokemon?.sprites" />
+    <Evolutions :id="pokemon.id" />
     <Type />
     <Stats />
     <Weakness />
