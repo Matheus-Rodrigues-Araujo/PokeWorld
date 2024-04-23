@@ -26,11 +26,11 @@ const handleInputChange = (e) => {
           <i class="bi bi-search fs-5 px-3"></i>
         </button>
       </div>
-      <p class="text-white">
+      <!-- <p class="text-white">
         keyboard shortcut to search:
         <span class="fs-6 bg-warning text-black px-1">Ctrl</span> +
         <span class="fs-6 bg-warning text-black px-1">K</span>
-      </p>
+      </p> -->
     </div>
   </div>
 </template>
