@@ -134,7 +134,7 @@ const togglePokedexData = () => {
 .steel { background-color: #B8B8D0; color: #000000; }
 .fire { background-color: #F08030; color: #FFFFFF; }
 .water { background-color: #6890F0; color: #FFFFFF; }
-.grass { background-color: #7ae644; color: #FFFFFF; }
+.grass { background-color: #7ae644; color: 000000; }
 .electric { background-color: #F8D030; color: #000000; }
 .psychic { background-color: #F85888; color: #FFFFFF; }
 .ice { background-color: #98D8D8; color: #000000; }

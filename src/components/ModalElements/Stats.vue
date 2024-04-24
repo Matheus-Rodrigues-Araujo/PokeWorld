@@ -1,57 +1,27 @@
 <script setup>
-const statList = [
-  {
-    name: "Hp",
-    total: "100%",
-    color: "red",
-  },
-  {
-    name: "Atk",
-    total: "80%",
-    color: "orangered",
-  },
-  {
-    name: "Def",
-    total: "82%",
-    color: "cyan",
-  },
-  {
-    name: "SpA",
-    total: "70%",
-    color: "#ec539c",
-  },
-  {
-    name: "SpD",
-    total: "78%",
-    color: "lightblue",
-  },
-  {
-    name: "Spe",
-    total: "95%",
-    color: "gray",
-  },
-];
+const props = defineProps({
+  statsList: Array
+})
 </script>
 
 <template>
   <div class="statistic px-2 px-md-5  align-items-center">
     <h6 class="fs-4 text-center">Stats</h6>
-    <ul class="list-unstyled">
+    <ul class="d-flex flex-column list-unstyled" style="gap: 2px;" >
       <li
-        v-for="item in statList"
-        class="stat-item d-flex align-items-center gap-3"
+        v-for="stat in statsList"
+        class="stat-item"
       >
         <span
-          class="fs-6 fw-medium"
-          style="color: var(--lighter-gray); width: 10%"
-          >{{ item.name }}
+          class="fw-medium text-uppercase"
+          >{{ stat.stat.name }}
         </span>
-        <div class="percentage w-100" style="height: 15px">
+        <div class="percentage w-100">
           <div
             :style="{
-              height: '15px',
-              width: item.total,
-              backgroundColor: item.color,
+              height: '100%',
+              width: `${stat.base_stat}%`,
+              backgroundColor: 'cyan',
             }"
           ></div>
         </div>
@@ -60,4 +30,18 @@ const statList = [
   </div>
 </template>
 
-<style></style>
+<style>
+.stat-item{
+  display: grid;
+  grid-template-columns: auto 60%;
+  gap: 2px;
+}
+
+.stat-item span{
+  font-size: 12px;
+  color: white;
+  padding-left: 5px;
+  background-color: var(--light-gray);
+}
+
+</style>

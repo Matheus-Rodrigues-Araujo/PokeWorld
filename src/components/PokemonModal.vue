@@ -7,7 +7,6 @@ import Moves from "./ModalElements/Moves.vue";
 import Type from "./ModalElements/Type.vue";
 import MainSprite from "./ModalElements/MainSprite.vue";
 import { ref } from "vue";
-const data = ref();
 const props = defineProps({
   togglePokedexData: {
     type: Function,
@@ -18,8 +17,7 @@ const props = defineProps({
 
 // console.log(props.pokemon)
 
-const { name, types, stats, move, sprites } = props?.pokemon
-console.log(types)
+const { name, types, stats, moves, sprites } = props?.pokemon
 </script>
 
 <template>
@@ -59,9 +57,9 @@ console.log(types)
             <MainSprite :name="name" :sprites="sprites" />
             <!-- <Evolutions :id="pokemon.id" /> -->
             <Type :typesList="types" />
-            <!-- <Stats /> -->
+            <Stats :statsList="stats" />
             <!-- <Weakness /> -->
-            <!-- <Moves /> -->
+            <Moves :moves="moves" />
           </div>
         </div>
       </div>
@@ -75,7 +73,8 @@ console.log(types)
 }
 
 .pokedex-data {
-  max-width: 400px;
+  max-width: 800px;
+  width: 600px;
 }
 
 .data-wrapper {
