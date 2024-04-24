@@ -5,6 +5,7 @@ import Stats from "./ModalElements/Stats.vue";
 import Moves from "./ModalElements/Moves.vue";
 import Type from "./ModalElements/Type.vue";
 import Sprites from "./ModalElements/Sprites.vue";
+
 const props = defineProps({
   togglePokedexData: {
     type: Function,
@@ -13,8 +14,8 @@ const props = defineProps({
   pokemon: Object,
 });
 
-const { name, types, stats, moves, sprites } = props?.pokemon
-console.log(sprites)
+const { name, types, stats, moves, sprites } = props?.pokemon;
+
 </script>
 
 <template>
