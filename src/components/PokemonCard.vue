@@ -45,7 +45,9 @@ const togglePokedexData = () => {
     class="pokemon-card flex-grow-1 d-flex flex-column"
     @click="togglePokedexData"
   >
-    <div class="pokemon-id position-absolute fs-5 left-2 p-1 bg-dark text-white">
+    <div
+      class="pokemon-id position-absolute fs-5 left-2 p-1 bg-dark text-white"
+    >
       #{{
         pokemon.value?.id < 10
           ? "00" + pokemon.value?.id
@@ -66,14 +68,12 @@ const togglePokedexData = () => {
     >
       <h4 class="text-white text-capitalize">{{ pokemon.value?.name }}</h4>
       <ul class="list-unstyled d-flex gap-1">
-        <li class="type text-white rounded-1 px-2 fs-5 fw-medium bg-success">
-          Grass
-        </li>
         <li
-          class="type text-white rounded-1 px-2 fs-5 fw-medium"
-          style="background-color: purple"
+          v-for="typeItem in pokemon.value?.types"
+          class="type rounded-1 px-2 fs-5 fw-medium"
+          :class="typeItem.type.name"
         >
-          Poison
+          {{ typeItem.type.name }}
         </li>
       </ul>
     </div>
@@ -95,7 +95,7 @@ const togglePokedexData = () => {
   border-top-left-radius: 4px;
 }
 
-.pokemon-card{
+.pokemon-card {
   cursor: pointer;
 }
 
@@ -113,4 +113,34 @@ const togglePokedexData = () => {
 .card-info {
   background-color: var(--light-gray);
 }
+
+.type {
+  width: 90px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.normal { background-color: #A8A878; color: #000000; }
+.fighting { background-color: #C03028; color: #FFFFFF; }
+.flying { background-color: #A890F0; color: #000000; }
+.poison { background-color: #A040A0; color: #FFFFFF; }
+.ground { background-color: #E0C068; color: #000000; }
+.rock { background-color: #B8A038; color: #FFFFFF; }
+.bug { background-color: #A8B820; color: #000000; }
+.ghost { background-color: #705898; color: #FFFFFF; }
+.steel { background-color: #B8B8D0; color: #000000; }
+.fire { background-color: #F08030; color: #FFFFFF; }
+.water { background-color: #6890F0; color: #FFFFFF; }
+.grass { background-color: #7ae644; color: #FFFFFF; }
+.electric { background-color: #F8D030; color: #000000; }
+.psychic { background-color: #F85888; color: #FFFFFF; }
+.ice { background-color: #98D8D8; color: #000000; }
+.dragon { background-color: #7038F8; color: #FFFFFF; }
+.dark { background-color: #705848; color: #FFFFFF; }
+.fairy { background-color: #EE99AC; color: #000000; }
+.unknown { background-color: #68A090; color: #FFFFFF; }
+.shadow { background-color: #604E82; color: #FFFFFF; }
 </style>

@@ -1,12 +1,25 @@
 <script setup>
-import PokemonModalData from "./PokemonModalData.vue";
-defineProps({
+// import PokemonModalData from "./PokemonModalData.vue";
+// import Evolutions from "./ModalElements/Evolutions.vue";
+import Stats from "./ModalElements/Stats.vue";
+import Weakness from "./ModalElements/Weakness.vue";
+import Moves from "./ModalElements/Moves.vue";
+import Type from "./ModalElements/Type.vue";
+import MainSprite from "./ModalElements/MainSprite.vue";
+import { ref } from "vue";
+const data = ref();
+const props = defineProps({
   togglePokedexData: {
     type: Function,
     required: true,
   },
   pokemon: Object,
 });
+
+// console.log(props.pokemon)
+
+const { name, types, stats, move, sprites } = props?.pokemon
+console.log(types)
 </script>
 
 <template>
@@ -41,7 +54,15 @@ defineProps({
       </div>
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3">
-          <PokemonModalData :pokemon="pokemon" />
+          <!-- <PokemonModalData :pokemon="{ pokemon }" /> -->
+          <div class="d-flex flex-column gap-3">
+            <MainSprite :name="name" :sprites="sprites" />
+            <!-- <Evolutions :id="pokemon.id" /> -->
+            <Type :typesList="types" />
+            <!-- <Stats /> -->
+            <!-- <Weakness /> -->
+            <!-- <Moves /> -->
+          </div>
         </div>
       </div>
     </div>
