@@ -1,6 +1,7 @@
 <script setup>
 import Evolutions from "./ModalElements/Evolutions.vue";
 import Stats from "./ModalElements/Stats.vue";
+import GameIndices from "./ModalElements/GameIndices.vue";
 import Moves from "./ModalElements/Moves.vue";
 import Type from "./ModalElements/Type.vue";
 import Sprites from "./ModalElements/Sprites.vue";
@@ -16,7 +17,7 @@ const props = defineProps({
 });
 
 const speciesData = reactive({});
-const { name, types, stats, moves, species, sprites } = props?.pokemon;
+const { name, types, stats, moves, species, sprites, game_indices } = props?.pokemon;
 
 const fetchSpeciesInformation = async () => {
   try {
@@ -74,6 +75,7 @@ onMounted(async () => {
             />
             <Type :typesList="types" />
             <Stats :statsList="stats" />
+            <GameIndices :games="game_indices"/>
             <Moves :moves="moves" />
           </div>
         </div>
