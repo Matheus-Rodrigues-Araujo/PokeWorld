@@ -1,10 +1,11 @@
 <script setup>
-// import Evolutions from "./ModalElements/Evolutions.vue";
+import Evolutions from "./ModalElements/Evolutions.vue";
 import Stats from "./ModalElements/Stats.vue";
-// import Weakness from "./ModalElements/Weakness.vue";
 import Moves from "./ModalElements/Moves.vue";
 import Type from "./ModalElements/Type.vue";
 import Sprites from "./ModalElements/Sprites.vue";
+import { onMounted, reactive } from "vue";
+import axios from "axios";
 
 const props = defineProps({
   togglePokedexData: {
@@ -14,15 +15,30 @@ const props = defineProps({
   pokemon: Object,
 });
 
-const { name, types, stats, moves, sprites } = props?.pokemon;
+const speciesData = reactive({});
+const { name, types, stats, moves, species, sprites } = props?.pokemon;
 
+const fetchSpeciesInformation = async () => {
+  try {
+    const response = await axios.get(species.url);
+    const data = await response.data;
+    speciesData.value = data;
+  } catch (error) {
+    console.error("error", error);
+    return false;
+  }
+};
+
+onMounted(async () => {
+  await fetchSpeciesInformation();
+});
 </script>
 
 <template>
   <div
     class="pokedex-data-container d-flex justify-content-center align-items-center z-3 position-fixed top-0 start-0 w-100"
   >
-    <div class="pokedex-data">
+    <div class="pokedex-data z-5">
       <div
         class="d-flex px-2 px-md-5 rounded-top justify-content-between align-items-center"
         style="background-color: var(--custom-red); height: 60px"
@@ -50,13 +66,14 @@ const { name, types, stats, moves, sprites } = props?.pokemon;
       </div>
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3">
-          <!-- <PokemonModalData :pokemon="{ pokemon }" /> -->
           <div class="d-flex flex-column gap-3">
             <Sprites :name="name" :sprites="sprites" />
-            <!-- <Evolutions :id="pokemon.id" /> -->
+            <Evolutions
+              v-if="speciesData.value?.name"
+              :evolutionChainURL="speciesData.value.evolution_chain.url"
+            />
             <Type :typesList="types" />
             <Stats :statsList="stats" />
-            <!-- <Weakness /> -->
             <Moves :moves="moves" />
           </div>
         </div>
@@ -72,7 +89,7 @@ const { name, types, stats, moves, sprites } = props?.pokemon;
 
 .pokedex-data {
   max-width: 800px;
-  width: 600px;
+  width: 80vw;
 }
 
 .data-wrapper {

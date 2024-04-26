@@ -23,8 +23,9 @@ const props = defineProps({
               width: `${stat.base_stat}%`,
               backgroundColor: 'cyan',
             }"
-          ></div>
+          >
         </div>
+      </div>
       </li>
     </ul>
   </div>

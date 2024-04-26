@@ -1,29 +1,35 @@
 <script setup>
+import { onMounted, ref } from "vue";
 import axios from "axios";
-import { onMounted, reactive, ref } from "vue";
-const evolutionChain = reactive({});
-const isLoading = ref(false);
-
-defineProps({
-  id: Number,
+import getEvolutionChain from "../../utils/getEvolutionChain";
+import getPokemonData from "../../utils/getPokemonData";
+const props = defineProps({
+  evolutionChainURL: String,
 });
-
+const isLoading = ref(true);
+const evolutionsList = ref([]);
+const evolutionsData = ref([]);
 const fetchEvolutionChain = async () => {
+  isLoading.value = true;
   try {
-    isLoading.value = true;
-    const response = await axios.get('https://pokeapi.co/api/v2/evolution-chain/' + props.id);
-    const data = await response.data;
-    console.log(data)
-    evolutionChain.value = data;
-    isLoading.value = false;
+    const response = await axios.get(props.evolutionChainURL);
+    const data = await response.data.chain;
+    evolutionsList.value = getEvolutionChain(data, []);
+    evolutionsList.value.map(async (item) => {
+      const pokemon = await getPokemonData(item.name, isLoading.value);
+      const { name, sprites, id } = pokemon;
+      evolutionsData.value.push({ id, name, sprites });
+    });
+    evolutionsData.value.sort((a, b) => a.id - b.id);
   } catch (error) {
-    console.error("error", error);
+    console.log("error", error);
+  } finally {
     isLoading.value = false;
   }
 };
 
-onMounted(() => {
-  fetchEvolutionChain();
+onMounted(async () => {
+  await fetchEvolutionChain();
 });
 </script>
 <template>
@@ -32,15 +38,34 @@ onMounted(() => {
   >
     <h6 class="fs-4">Evolutions</h6>
     <div
+      v-if="evolutionsData.length !== null"
       class="evolution-list d-flex flex-wrap gap-3"
     >
-      <div class="evolution d-flex justify-content-center">
-        <img class="rounded" src="/src/assets/bulbasaur.png" alt="Bulbasaur" />
+      <div
+        v-for="evolution in evolutionsData"
+        class="evolution d-flex flex-column align-items-center justify-content-center"
+      >
+        <img
+          class="rounded"
+          :src="
+            evolution.sprites.other['official-artwork'].front_default ||
+            evolution.sprites.front_default
+          "
+          :alt="
+            evolution.name[0].toUpperCase() +
+            evolution.name.slice(1, evolution.name.length)
+          "
+          :title="
+            evolution.name[0].toUpperCase() +
+            evolution.name.slice(1, evolution.name.length)
+          "
+        />
+        <p class="text-capitalize">{{ evolution.name }}</p>
       </div>
     </div>
-    <!-- <div v-else>
+    <div v-else>
       <p class="text-dark fs-5">This Pokemon doesn't evolve</p>
-    </div> -->
+    </div>
   </div>
 </template>
 

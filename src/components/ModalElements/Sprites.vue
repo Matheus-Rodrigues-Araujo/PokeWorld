@@ -51,4 +51,10 @@ getSpritesURL(props.sprites, spritesList);
 .sprites-list img {
   background-color: rgb(222, 255, 224);
 }
+
+@media screen and (max-width: 450px) {
+  .main-sprite {
+    max-width: 220px;
+  }
+}
 </style>

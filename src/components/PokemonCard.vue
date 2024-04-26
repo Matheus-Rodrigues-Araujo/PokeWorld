@@ -1,9 +1,8 @@
 <script setup>
-import axios from "axios";
 import PokemonModal from "./PokemonModal.vue";
 import Loading from "./Loading.vue";
 import { inject, onMounted, reactive, ref } from "vue";
-
+import getPokemonData from "../utils/getPokemonData";
 const props = defineProps({
   name: String,
 });
@@ -12,23 +11,18 @@ const showPokedexData = ref(false);
 const pokemon = reactive({});
 const isLoading = ref(true);
 const pokemonsList = inject("pokemonsList");
+
 onMounted(() => {
-  fetchPokemon();
+  savePokemon();
 });
 
-const fetchPokemon = async () => {
-  isLoading.value = true;
+const savePokemon = async () => {
   try {
-    const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${props.name}/`
-    );
-    const data = await response.data;
+    const data = await getPokemonData(props.name, isLoading.value);
     pokemon.value = data;
     pokemonsList.value.push(pokemon.value);
   } catch (error) {
-    console.error("Erro ao buscar dados do Pokémon:", error);
-  } finally {
-    isLoading.value = false;
+    console.error("error", error);
   }
 };
 
@@ -123,24 +117,84 @@ const togglePokedexData = () => {
   text-transform: capitalize;
 }
 
-.normal { background-color: #A8A878; color: #000000; }
-.fighting { background-color: #C03028; color: #FFFFFF; }
-.flying { background-color: #A890F0; color: #000000; }
-.poison { background-color: #A040A0; color: #FFFFFF; }
-.ground { background-color: #E0C068; color: #000000; }
-.rock { background-color: #B8A038; color: #FFFFFF; }
-.bug { background-color: #A8B820; color: #000000; }
-.ghost { background-color: #705898; color: #FFFFFF; }
-.steel { background-color: #B8B8D0; color: #000000; }
-.fire { background-color: #F08030; color: #FFFFFF; }
-.water { background-color: #6890F0; color: #FFFFFF; }
-.grass { background-color: #7ae644; color: 000000; }
-.electric { background-color: #F8D030; color: #000000; }
-.psychic { background-color: #F85888; color: #FFFFFF; }
-.ice { background-color: #98D8D8; color: #000000; }
-.dragon { background-color: #7038F8; color: #FFFFFF; }
-.dark { background-color: #705848; color: #FFFFFF; }
-.fairy { background-color: #EE99AC; color: #000000; }
-.unknown { background-color: #68A090; color: #FFFFFF; }
-.shadow { background-color: #604E82; color: #FFFFFF; }
+.normal {
+  background-color: #a8a878;
+  color: #000000;
+}
+.fighting {
+  background-color: #c03028;
+  color: #ffffff;
+}
+.flying {
+  background-color: #a890f0;
+  color: #000000;
+}
+.poison {
+  background-color: #a040a0;
+  color: #ffffff;
+}
+.ground {
+  background-color: #e0c068;
+  color: #000000;
+}
+.rock {
+  background-color: #b8a038;
+  color: #ffffff;
+}
+.bug {
+  background-color: #a8b820;
+  color: #000000;
+}
+.ghost {
+  background-color: #705898;
+  color: #ffffff;
+}
+.steel {
+  background-color: #b8b8d0;
+  color: #000000;
+}
+.fire {
+  background-color: #f08030;
+  color: #ffffff;
+}
+.water {
+  background-color: #6890f0;
+  color: #ffffff;
+}
+.grass {
+  background-color: #7ae644;
+  color: 000000;
+}
+.electric {
+  background-color: #f8d030;
+  color: #000000;
+}
+.psychic {
+  background-color: #f85888;
+  color: #ffffff;
+}
+.ice {
+  background-color: #98d8d8;
+  color: #000000;
+}
+.dragon {
+  background-color: #7038f8;
+  color: #ffffff;
+}
+.dark {
+  background-color: #705848;
+  color: #ffffff;
+}
+.fairy {
+  background-color: #ee99ac;
+  color: #000000;
+}
+.unknown {
+  background-color: #68a090;
+  color: #ffffff;
+}
+.shadow {
+  background-color: #604e82;
+  color: #ffffff;
+}
 </style>
