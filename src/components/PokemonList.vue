@@ -12,13 +12,11 @@ let limit = 20;
 
 const fetchPokemonArray = async (url) => {
   try {
-      isLoading.value = true;
+    isLoading.value = true;
     const response = await axios.get(url);
     const data = await response.data;
     pokemonArray.value = data.results;
-    limit += 20;
     isLoading.value = false;
-    
   } catch (error) {
     console.error("error", error);
     isLoading.value = false;
@@ -27,26 +25,29 @@ const fetchPokemonArray = async (url) => {
 
 watchEffect(() => {
   if (searchValue.value && searchValue.value.length > 2) {
-    const filtered = pokemonsList.value.filter(pokemon =>
-      pokemon.name.includes(searchValue.value.toLowerCase()) ||
-      pokemon.id.toString() === searchValue.value
+    const filtered = pokemonsList.value.filter(
+      (pokemon) =>
+        pokemon.name.includes(searchValue.value.toLowerCase()) ||
+        pokemon.id.toString() === searchValue.value
     );
 
     if (filtered) {
-      const uniqueFiltered = [...new Set(filtered.map(pokemon => pokemon.name))]
-        .map(name => filtered.find(pokemon => pokemon.name === name));
+      const uniqueFiltered = [
+        ...new Set(filtered.map((pokemon) => pokemon.name)),
+      ].map((name) => filtered.find((pokemon) => pokemon.name === name));
       pokemonArray.value = uniqueFiltered;
-      enableInfiniteScroll.value = true
+      enableInfiniteScroll.value = false;
     } else {
-      enableInfiniteScroll.value = false
-      fetchPokemonArray(`https://pokeapi.co/api/v2/pokemon/${searchValue.value}`);
+      enableInfiniteScroll.value = false;
+      fetchPokemonArray(
+        `https://pokeapi.co/api/v2/pokemon/${searchValue.value}`
+      );
     }
   } else {
     fetchPokemonArray(baseURL);
-    enableInfiniteScroll.value = true
+    enableInfiniteScroll.value = true;
   }
 });
-
 
 onMounted(() => {
   if (limit <= 10000) {
@@ -58,7 +59,12 @@ const handleScroll = () => {
   const scrollPosition = window.scrollY + window.innerHeight;
   const totalHeight = document.documentElement.scrollHeight;
 
-  if (enableInfiniteScroll.value && scrollPosition >= totalHeight && !isLoading.value) {
+  if (
+    enableInfiniteScroll.value &&
+    scrollPosition >= totalHeight &&
+    !isLoading.value
+  ) {
+    limit += 20;
     fetchPokemonArray(
       `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`
     );

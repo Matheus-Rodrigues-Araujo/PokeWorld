@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const getPokemonData = async ( pokemon, loading) => {
-  loading = true;
+const getPokemonData = async (pokemon) => {
   try {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
@@ -10,9 +9,7 @@ const getPokemonData = async ( pokemon, loading) => {
     return data;
   } catch (error) {
     console.error("Erro ao buscar dados do Pokémon:", error);
-  } finally {
-    loading = false;
-  }
+  } 
 };
 
 export default getPokemonData
