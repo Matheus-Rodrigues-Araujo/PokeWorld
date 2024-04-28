@@ -13,6 +13,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "vue": "^3.4.21",
+    "vue-i18n": "^9.13.1",
     "vue-styled-components": "^1.6.0"
   },
   "devDependencies": {

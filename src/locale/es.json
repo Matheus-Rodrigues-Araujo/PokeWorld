@@ -1,0 +1,52 @@
+{
+  "sidebar": {
+    "myList": "Mi Lista",
+    "theme": "Tema"
+  },
+  "input": {
+    "label": "Nombre o Número"
+  },
+  "filters": {
+    "random": "Pokémon Aleatorio",
+    "sort": {
+      "label": "Ordenar Por",
+      "options": {
+        "lowest": "Número Más Bajo",
+        "highest": "Número Más Alto",
+        "a-z": "A-Z",
+        "z-a": "Z-A"
+      }
+    }
+  },
+  "modal": {
+    "title": "POKÉDATA",
+    "sprites": "Sprites",
+    "evolutions": "Evoluciones",
+    "type": "Tipo",
+    "stats": {
+      "title": "Estadísticas",
+      "statsLabel": {
+        "hp": "PS",
+        "attack": "Ataque",
+        "defense": "Defensa",
+        "special-attack": "Ataque Especial",
+        "special-defense": "Defensa Especial",
+        "speed": "Velocidad"
+      }
+    },
+    "game_indices": {
+      "title": "Índices de Juegos",
+      "button": {
+        "show-more": "Mostrar más juegos",
+        "show-less": "Mostrar menos juegos"
+      }
+    },
+    "moves": {
+      "title": "Movimientos",
+      "button": {
+        "show-more": "Mostrar más movimientos",
+        "show-less": "Mostrar menos movimientos"
+      }
+    }
+  }
+}
