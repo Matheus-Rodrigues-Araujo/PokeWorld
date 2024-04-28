@@ -2,9 +2,12 @@
 import { inject, onMounted, onUnmounted, ref, watchEffect } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
-const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0";
+import filteredPokemon from "../utils/filteredPokemon";
+
 const searchValue = inject("searchValue");
 const pokemonsList = inject("pokemonsList");
+const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0";
+
 const pokemonArray = ref([]);
 const isLoading = ref(false);
 const enableInfiniteScroll = ref(true); // Variável para controlar o scroll infinito
@@ -25,11 +28,7 @@ const fetchPokemonArray = async (url) => {
 
 watchEffect(() => {
   if (searchValue.value && searchValue.value.length > 2) {
-    const filtered = pokemonsList.value.filter(
-      (pokemon) =>
-        pokemon.name.includes(searchValue.value.toLowerCase()) ||
-        pokemon.id.toString() === searchValue.value
-    );
+    const filtered = filteredPokemon(pokemonsList, searchValue);
 
     if (filtered) {
       const uniqueFiltered = [
@@ -37,7 +36,7 @@ watchEffect(() => {
       ].map((name) => filtered.find((pokemon) => pokemon.name === name));
       pokemonArray.value = uniqueFiltered;
       enableInfiniteScroll.value = false;
-    } else {
+    } else if (!filtered) {
       enableInfiniteScroll.value = false;
       fetchPokemonArray(
         `https://pokeapi.co/api/v2/pokemon/${searchValue.value}`

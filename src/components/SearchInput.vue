@@ -1,14 +1,11 @@
 <script setup>
 import { inject } from "vue";
-// import getPokemonData from '../utils/getPokemonData'
 
 const searchValue = inject('searchValue')
 
 const handleInputChange = (e) => {
   searchValue.value = e.target.value
 };
-
-
 
 </script>
 <template>
