@@ -2,6 +2,8 @@
 
 This website allows Pokémon fans to have fun discovering more details about their favorite Pokémon. In it, users can see information about each Pokémon, such as its evolutions, type, statistics, movements, game indexes and all its designs/sprites.
 
+Link: https://pokeworld-app.vercel.app/
+
 ## Stack
 
 - Vuejs
