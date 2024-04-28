@@ -1,7 +1,17 @@
-# Vue 3 + Vite
+# PokéWorld
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This website allows Pokémon fans to have fun discovering more details about their favorite Pokémon. In it, users can see information about each Pokémon, such as its evolutions, type, statistics, movements, game indexes and all its designs/sprites.
 
-## Recommended IDE Setup
+## Stack
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+- Vuejs
+- JavaScript
+- HTML
+- CSS
+- Bootstrap
+
+## Screenshots
+
+![alt text](src/screenshots/01.PNG)
+![alt text](src/screenshots/02.PNG)
+![alt text](src/screenshots/03.PNG)
