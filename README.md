@@ -10,6 +10,20 @@ This website allows Pokémon fans to have fun discovering more details about the
 - CSS
 - Bootstrap
 
+## Functionalities
+Functionalities:
+
+- Use of VueX for state management
+- List of Pokémon
+- Infinite scroll
+- Filtering for name, id;
+- Display of information on a card:
+     - All Pokémon sprites;
+     - Attack movements;
+     - Pokémon evolutions;
+     - View all game indexes;
+- Responsive design with bootstrap
+
 ## Screenshots
 
 ![alt text](src/screenshots/01.PNG)
