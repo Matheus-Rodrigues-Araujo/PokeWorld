@@ -18,7 +18,8 @@ defineProps({
       <li class="cursor-pointer">
         <span href="#" class="nav-link text-white">
           <i class="bi bi-brightness-high-fill"></i>
-          Theme
+          <!-- Theme -->
+          {{ $translate('options.en.sidebar.theme') }}
         </span>
       </li>
       <li class="d-flex align-items-center gap-1 mx-3">
