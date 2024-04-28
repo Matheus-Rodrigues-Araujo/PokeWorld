@@ -41,7 +41,6 @@ const toggleSidebar = () => {
   <Sidebar
     v-if="showSidebar"
     isSidebarVisible="showSidebar"
-    
   />
 </template>
 
