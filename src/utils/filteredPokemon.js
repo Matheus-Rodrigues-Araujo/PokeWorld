@@ -1,4 +1,4 @@
-const filteredPokemon = (arr, inputValue) => {
+const filteredPokemon = (arr=Array, inputValue) => {
   const filtered = arr.value.filter(
     (item) =>
       item.name.includes(inputValue.value.toLowerCase()) ||

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getPokemonData = async (pokemon) => {
+const getPokemonData = async (pokemon=String) => {
   try {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}/`

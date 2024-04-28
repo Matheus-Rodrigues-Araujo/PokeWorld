@@ -3,6 +3,7 @@ import { inject, onMounted, onUnmounted, ref, watchEffect } from "vue";
 import PokemonCard from "./PokemonCard.vue";
 import axios from "axios";
 import filteredPokemon from "../utils/filteredPokemon";
+import getPokemonData from "../utils/getPokemonData";
 
 const searchValue = inject("searchValue");
 const pokemonsList = inject("pokemonsList");
@@ -10,10 +11,10 @@ const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0";
 
 const pokemonArray = ref([]);
 const isLoading = ref(false);
-const enableInfiniteScroll = ref(true); // Variável para controlar o scroll infinito
+const enableInfiniteScroll = ref(true);
 let limit = 20;
 
-const fetchPokemonArray = async (url) => {
+const fetchPokemonArray = async (url = String) => {
   try {
     isLoading.value = true;
     const response = await axios.get(url);
@@ -26,21 +27,26 @@ const fetchPokemonArray = async (url) => {
   }
 };
 
-watchEffect(() => {
-  if (searchValue.value && searchValue.value.length > 2) {
+watchEffect(async () => {
+  isLoading.value = true;
+  if (searchValue.value.length > 0) {
     const filtered = filteredPokemon(pokemonsList, searchValue);
 
-    if (filtered) {
+    if (filtered.length > 0) {
       const uniqueFiltered = [
         ...new Set(filtered.map((pokemon) => pokemon.name)),
       ].map((name) => filtered.find((pokemon) => pokemon.name === name));
       pokemonArray.value = uniqueFiltered;
       enableInfiniteScroll.value = false;
-    } else if (!filtered) {
-      enableInfiniteScroll.value = false;
-      fetchPokemonArray(
-        `https://pokeapi.co/api/v2/pokemon/${searchValue.value}`
-      );
+      isLoading.value = false;
+    } else {
+      const pokemonData = await getPokemonData(searchValue.value);
+      if (pokemonData) {
+        pokemonArray.value = [pokemonData];
+        enableInfiniteScroll.value = false;
+        isLoading.value = false;
+      } else {
+      }
     }
   } else {
     fetchPokemonArray(baseURL);
@@ -50,7 +56,7 @@ watchEffect(() => {
 
 onMounted(() => {
   if (limit <= 10000) {
-    fetchPokemonArray(baseURL, true);
+    fetchPokemonArray(baseURL);
   }
 });
 
@@ -87,8 +93,8 @@ onUnmounted(() => {
       :name="pokemon.name"
     />
     <div
-      v-if="isLoading && enableInfiniteScroll.value"
-      class="loading-indicator fs-4"
+      v-if="isLoading.value && enableInfiniteScroll.value"
+      class="loading-indicator fs-3"
       style="color: var(--custom-red)"
     >
       Loading...
