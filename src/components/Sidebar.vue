@@ -1,32 +1,40 @@
 <script setup>
+import { inject, watch } from "vue";
+const currentLanguage = inject("currentLanguage");
+
 defineProps({
   isSidebarVisible: Boolean,
 });
+
+watch(
+  currentLanguage,
+  (newLocale) => {
+    currentLanguage.value = newLocale;
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
-  <div
-    class="sidebar d-flex flex-column p-3 vh-100 position-fixed end-0 z-1"
-    >
+  <div class="sidebar d-flex flex-column p-3 vh-100 position-fixed end-0 z-1">
     <ul class="nav nav-pills flex-column mb-auto">
       <li>
         <a href="#" class="nav-link text-white">
           <i class="bi bi-bookmark-fill"></i>
-          My List
+          {{ $translate(`options.${currentLanguage}.sidebar.myList`) }}
         </a>
       </li>
       <li class="cursor-pointer">
         <span href="#" class="nav-link text-white">
           <i class="bi bi-brightness-high-fill"></i>
-          <!-- Theme -->
-          {{ $translate('options.en.sidebar.theme') }}
+          {{ $translate(`options.${currentLanguage}.sidebar.theme`) }}
         </span>
       </li>
       <li class="d-flex align-items-center gap-1 mx-3">
         <i class="bi bi-globe-americas text-white"></i>
         <label for="selectLanguage">
-          <select id="selectLanguage">
-            <option value="pt-br">Português (Brasil)</option>
+          <select id="selectLanguage" v-model="currentLanguage">
+            <option value="pt_br">Português (Brasil)</option>
             <option value="en">English</option>
             <option value="es">Spanish</option>
           </select>
@@ -45,7 +53,6 @@ defineProps({
   position: fixed;
   right: 0;
 }
-
 
 select {
   background-color: black;

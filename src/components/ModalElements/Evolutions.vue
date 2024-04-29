@@ -1,14 +1,18 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, inject } from "vue";
 import axios from "axios";
 import getEvolutionChain from "../../utils/getEvolutionChain";
 import getPokemonData from "../../utils/getPokemonData";
+
 const props = defineProps({
   evolutionChainURL: String,
 });
+
 const isLoading = ref(true);
 const evolutionsList = ref([]);
 const evolutionsData = ref([]);
+const currentLanguage = inject('currentLanguage')
+
 const fetchEvolutionChain = async () => {
   isLoading.value = true;
   try {
@@ -36,7 +40,9 @@ onMounted(async () => {
   <div
     class="evolutions-container px-2 px-md-5 d-flex flex-column align-items-center"
   >
-    <h6 class="fs-4">Evolutions</h6>
+    <h6 class="fs-4">
+      {{ $translate(`options.${currentLanguage}.modal.evolutions`) }}
+    </h6>
     <div
       v-if="evolutionsData.length !== null"
       class="evolution-list d-flex flex-wrap gap-3"

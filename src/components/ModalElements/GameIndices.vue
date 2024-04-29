@@ -1,15 +1,19 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 
 const props = defineProps({
   games: Array,
 });
 
+const currentLanguage = inject('currentLanguage')
+
 const count = ref(8)
 </script>
 <template>
   <div class="games px-2 px-md-5 d-flex flex-column">
-    <h6 class="fs-4 text-center">Games Indices</h6>
+    <h6 class="fs-4 text-center">
+      {{ $translate(`options.${currentLanguage}.modal.game_indices.title`) }}
+    </h6>
     <ul class="games-list p-0">
       <li v-for="game in games.slice(0, count)"
         class="game d-flex flex-column p-2 align-items-center justify-content-center  rounded-1"

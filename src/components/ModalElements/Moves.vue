@@ -1,15 +1,18 @@
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 
 const props = defineProps({
   moves: Array,
 });
+const currentLanguage = inject('currentLanguage')
 
 const count = ref(12);
 </script>
 <template>
   <div class="moves px-2 px-md-5 d-flex flex-column">
-    <h6 class="fs-4 text-center">Moves</h6>
+    <h6 class="fs-4 text-center">
+      {{ $translate(`options.${currentLanguage}.modal.moves.title`) }}
+    </h6>
     <ul class="moves-list gap-1 p-0">
       <li
         v-for="move in props.moves.slice(0, count)"

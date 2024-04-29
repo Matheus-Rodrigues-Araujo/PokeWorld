@@ -8,6 +8,7 @@ import Sprites from "./ModalElements/Sprites.vue";
 import { onMounted, reactive } from "vue";
 import axios from "axios";
 
+
 const props = defineProps({
   togglePokedexData: {
     type: Function,

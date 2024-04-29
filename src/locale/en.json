@@ -13,8 +13,8 @@
         "options": {
           "lowest": "Lowest Number",
           "highest": "Highest Number",
-          "a-z": "A-Z",
-          "z-a": "Z-A"
+          "a_z": "A-Z",
+          "z_a": "Z-A"
         }
       }
     },
@@ -37,15 +37,15 @@
       "game_indices": {
         "title": "Game Indices",
         "button": {
-          "show-more": "Show more games",
-          "show-less": "Show less games"
+          "show_more": "Show more games",
+          "show_less": "Show less games"
         }
       },
       "moves": {
         "title": "Moves",
         "button": {
-          "show-more": "Show more moves",
-          "show-less": "Show less moves"
+          "show_more": "Show more moves",
+          "show_less": "Show less moves"
         }
       }
     }

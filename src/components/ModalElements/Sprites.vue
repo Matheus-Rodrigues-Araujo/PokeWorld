@@ -1,9 +1,12 @@
 <script setup>
+import { inject } from "vue";
 import getSpritesURL from "../../utils/getSpritesURL";
+const currentLanguage = inject('currentLanguage')
 const props = defineProps({
   name: String,
   sprites: Object,
 });
+
 
 const spritesList = [];
 getSpritesURL(props.sprites, spritesList);
@@ -19,7 +22,9 @@ getSpritesURL(props.sprites, spritesList);
       class="main-sprite rounded"
     />
     <div class="sprites-container d-flex flex-column gap-3">
-      <h6 class="fs-4 text-capitalize text-center">Sprites</h6>
+      <h6 class="fs-4 text-capitalize text-center">
+      {{ $translate(`options.${currentLanguage}.modal.sprites`) }}
+      </h6>
       <div class="sprites-list rounded">
         <img
           v-for="sprite in spritesList"

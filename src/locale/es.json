@@ -13,8 +13,8 @@
       "options": {
         "lowest": "Número Más Bajo",
         "highest": "Número Más Alto",
-        "a-z": "A-Z",
-        "z-a": "Z-A"
+        "a_z": "A-Z",
+        "z_a": "Z-A"
       }
     }
   },
@@ -37,15 +37,15 @@
     "game_indices": {
       "title": "Índices de Juegos",
       "button": {
-        "show-more": "Mostrar más juegos",
-        "show-less": "Mostrar menos juegos"
+        "show_more": "Mostrar más juegos",
+        "show_less": "Mostrar menos juegos"
       }
     },
     "moves": {
       "title": "Movimientos",
       "button": {
-        "show-more": "Mostrar más movimientos",
-        "show-less": "Mostrar menos movimientos"
+        "show_more": "Mostrar más movimientos",
+        "show_less": "Mostrar menos movimientos"
       }
     }
   }

@@ -1,12 +1,17 @@
 <script setup>
+import { inject } from 'vue';
 const props = defineProps({
   statsList: Array
 })
+const currentLanguage = inject('currentLanguage')
+
 </script>
 
 <template>
   <div class="statistic px-2 px-md-5  align-items-center">
-    <h6 class="fs-4 text-center">Stats</h6>
+    <h6 class="fs-4 text-center">
+      {{ $translate(`options.${currentLanguage}.modal.stats.title`) }}
+    </h6>
     <ul class="d-flex flex-column list-unstyled" style="gap: 2px;" >
       <li
         v-for="stat in statsList"

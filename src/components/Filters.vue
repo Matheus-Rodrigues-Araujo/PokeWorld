@@ -1,20 +1,26 @@
+<script setup>
+import { inject } from "vue";
+const currentLanguage = inject("currentLanguage");
+</script>
 <template>
   <div
     class="d-flex flex-column flex-md-row gap-3 mt-4 justify-content-center w-100 px-5"
-    style="margin-inline: auto;"
+    style="margin-inline: auto"
   >
     <button
       class="bg-info border-0 p-1 rounded d-flex flex-grow-1 gap-1 justify-content-center align-items-center text-white fs-5 fw-medium"
       style="height: 60px"
     >
       <i class="bi bi-arrow-clockwise"></i>
-      Random Pokémon
+      {{ $translate(`options.${currentLanguage}.filters.random`) }}
     </button>
     <div
       class="d-flex flex-column flex-md-row gap-md-3 flex-grow-1"
       style="color: var(--lighter-gray)"
     >
-      <h3 class="fs-5 fw-normal my-md-auto">Sort By</h3>
+      <h3 class="fs-5 fw-normal my-md-auto">
+      {{ $translate(`options.${currentLanguage}.filters.sort.label`) }}
+      </h3>
       <label
         for="selectLanguage"
         class="bg-black border-0 p-1 rounded d-flex gap-1 flex-grow-1 justify-content-center align-items-center text-white fs-5 fw-medium"
@@ -39,19 +45,35 @@
             value="lowest-number"
             style="background-color: var(--light-gray)"
           >
-            Lowest Number
+            {{
+              $translate(
+                `options.${currentLanguage}.filters.sort.options.lowest`
+              )
+            }}
           </option>
           <option
             value="highest-number"
             style="background-color: var(--light-gray)"
           >
-            Highest Number
+            {{
+              $translate(
+                `options.${currentLanguage}.filters.sort.options.highest`
+              )
+            }}
           </option>
-          <option value="a-z" style="background-color: var(--light-gray)">
-            A-Z
+          <option value="a_z" style="background-color: var(--light-gray)">
+            {{
+              $translate(
+                `options.${currentLanguage}.filters.sort.options.a_z`
+              )
+            }}
           </option>
-          <option value="z-a" style="background-color: var(--light-gray)">
-            Z-A
+          <option value="z_a" style="background-color: var(--light-gray)">
+            {{
+              $translate(
+                `options.${currentLanguage}.filters.sort.options.z_a`
+              )
+            }}
           </option>
         </select>
       </label>

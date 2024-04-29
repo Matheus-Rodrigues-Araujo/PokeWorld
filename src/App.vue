@@ -1,18 +1,21 @@
 <script setup>
-import { provide, ref } from "vue";
+import { provide, reactive, ref } from "vue";
 import AdvancedSearch from "./components/AdvancedSearch.vue";
 import Filters from "./components/Filters.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import SearchInput from "./components/SearchInput.vue";
 import PokemonList from "./components/PokemonList.vue";
+import { i18n } from "./main";
+const searchValue = ref("");
+const pokemonsList = ref([]);
+const translation = reactive(i18n)
+const currentLanguage = ref('en')
 
-const searchValue = ref('')
-const pokemonsList = ref([])
-
-provide('searchValue', searchValue )
-provide('pokemonsList', pokemonsList )
-
+provide("searchValue", searchValue);
+provide("pokemonsList", pokemonsList);
+provide("translation", translation);
+provide("currentLanguage", currentLanguage )
 </script>
 
 <template>
@@ -20,7 +23,7 @@ provide('pokemonsList', pokemonsList )
   <main>
     <SearchInput />
     <AdvancedSearch />
-    <div class="pokedex-content d-flex flex-column justify-content-center" >
+    <div class="pokedex-content d-flex flex-column justify-content-center">
       <Filters />
       <PokemonList />
     </div>
@@ -35,9 +38,8 @@ main {
   min-height: 100vh;
 }
 
-.pokedex-content{
+.pokedex-content {
   max-width: 1100px;
   margin-inline: auto;
 }
-
 </style>

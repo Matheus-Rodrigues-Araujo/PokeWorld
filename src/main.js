@@ -10,27 +10,26 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 
-const app = createApp(App);
 const options = {
   en: en,
   es: es,
   pt_br: ptBr,
 };
 
-const i18n = {
+export const i18n = {
   options,
   locale: "en",
   fallbackLocale: "en",
 };
 
+
+const app = createApp(App);
+
 app.use(i18nPlugin, {
   options,
   i18n,
 });
+
 app.mount("#app");
 
-app.provide("i18n", i18n);
 
-export const changeTranslation = (option) => {
-  i18n.locale = option;
-};
