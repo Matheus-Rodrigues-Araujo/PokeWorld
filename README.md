@@ -25,9 +25,13 @@ Functionalities:
      - Pokémon evolutions;
      - View all game indexes;
 - Responsive design with bootstrap
+- Internationalization:
+     - English
+     - Spanish
+     - Portuguese(Brazil)
+
 
 ## Screenshots
-
 ![alt text](src/screenshots/01.PNG)
 ![alt text](src/screenshots/02.PNG)
 ![alt text](src/screenshots/03.PNG)
