@@ -1,5 +1,6 @@
 <script setup>
 import PokemonModal from "./PokemonModal.vue";
+import axios from "axios";
 import Loading from "./Loading.vue";
 import { inject, onMounted, reactive, ref } from "vue";
 import getPokemonData from "../utils/getPokemonData";
@@ -18,11 +19,37 @@ onMounted(() => {
 
 const savePokemon = async () => {
   try {
-    const data = await getPokemonData(props.name, isLoading.value);
-    pokemon.value = data;
-    pokemonsList.value.push(pokemon.value);
+    const pokemonResponse = await getPokemonData(props.name, isLoading.value);
+    const pokemonData = await pokemonResponse;
+    const speciesURL = await pokemonResponse.species;
+    if (speciesURL) {
+      const speciesResponse = await fetchSpeciesInformation(speciesURL);
+      const data = await speciesResponse;
+      const { names, evolution_chain } = data;
+      const translations = names.filter(
+        (item) =>
+          item.language.name === "en" ||
+          item.language.name === "es" ||
+          item.language.name === "pt-BR"
+      );
+      pokemonData.translations = translations
+      pokemonData.evolution_chain = evolution_chain
+      pokemon.value = pokemonData
+      pokemonsList.value.push(pokemon.value)
+    }
   } catch (error) {
     console.error("error", error);
+  }
+};
+
+const fetchSpeciesInformation = async (species) => {
+  try {
+    const response = await axios.get(species.url);
+    const data = await response.data;
+    return data;
+  } catch (error) {
+    console.error("error", error);
+    return false;
   }
 };
 

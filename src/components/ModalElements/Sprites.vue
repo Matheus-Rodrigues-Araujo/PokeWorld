@@ -2,11 +2,11 @@
 import { inject } from "vue";
 import getSpritesURL from "../../utils/getSpritesURL";
 const currentLanguage = inject('currentLanguage')
+
 const props = defineProps({
   name: String,
   sprites: Object,
 });
-
 
 const spritesList = [];
 getSpritesURL(props.sprites, spritesList);

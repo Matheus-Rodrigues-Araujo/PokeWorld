@@ -34,7 +34,7 @@ watch(
         <i class="bi bi-globe-americas text-white"></i>
         <label for="selectLanguage">
           <select id="selectLanguage" v-model="currentLanguage">
-            <option value="pt_br">Português (Brasil)</option>
+            <option value="pt-BR">Português (Brasil)</option>
             <option value="en">English</option>
             <option value="es">Spanish</option>
           </select>

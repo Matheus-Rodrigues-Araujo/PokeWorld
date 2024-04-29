@@ -11,9 +11,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 
 const options = {
-  en: en,
-  es: es,
-  pt_br: ptBr,
+  "en": en,
+  "es": es,
+  "pt-BR": ptBr,
 };
 
 export const i18n = {

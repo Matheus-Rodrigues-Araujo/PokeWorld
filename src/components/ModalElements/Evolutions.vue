@@ -11,7 +11,7 @@ const props = defineProps({
 const isLoading = ref(true);
 const evolutionsList = ref([]);
 const evolutionsData = ref([]);
-const currentLanguage = inject('currentLanguage')
+const currentLanguage = inject("currentLanguage");
 
 const fetchEvolutionChain = async () => {
   isLoading.value = true;

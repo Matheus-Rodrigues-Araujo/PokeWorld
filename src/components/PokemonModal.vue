@@ -5,9 +5,9 @@ import GameIndices from "./ModalElements/GameIndices.vue";
 import Moves from "./ModalElements/Moves.vue";
 import Type from "./ModalElements/Type.vue";
 import Sprites from "./ModalElements/Sprites.vue";
-import { onMounted, reactive } from "vue";
-import axios from "axios";
-
+import { inject, ref } from "vue";
+const currentLanguage = inject("currentLanguage");
+const translatedName = ref("");
 
 const props = defineProps({
   togglePokedexData: {
@@ -17,23 +17,35 @@ const props = defineProps({
   pokemon: Object,
 });
 
-const speciesData = reactive({});
-const { name, types, stats, moves, species, sprites, game_indices } = props?.pokemon;
+const {
+  name,
+  types,
+  stats,
+  moves,
+  // species,
+  evolution_chain,
+  translations,
+  sprites,
+  game_indices,
+} = props?.pokemon;
 
-const fetchSpeciesInformation = async () => {
+const getTranslatedName = () => {
   try {
-    const response = await axios.get(species.url);
-    const data = await response.data;
-    speciesData.value = data;
+    const translation = translations.filter((item) => {
+      if (item.language.name === currentLanguage.value) {
+        return item.name;
+      }
+    });
+    if (!translation.length) {
+      return name;
+    }
+    return translation[0].name;
   } catch (error) {
     console.error("error", error);
-    return false;
   }
 };
 
-onMounted(async () => {
-  await fetchSpeciesInformation();
-});
+translatedName.value = getTranslatedName();
 </script>
 
 <template>
@@ -69,14 +81,14 @@ onMounted(async () => {
       <div class="data-wrapper rounded-bottom bg-white d-flex flex-column">
         <div class="d-flex flex-column gap-3 my-3">
           <div class="d-flex flex-column gap-3">
-            <Sprites :name="name" :sprites="sprites" />
+            <Sprites :name="translatedName" :sprites="sprites" />
             <Evolutions
-              v-if="speciesData.value?.name"
-              :evolutionChainURL="speciesData.value.evolution_chain.url"
+              v-if="evolution_chain"
+              :evolutionChainURL="evolution_chain.url"
             />
             <Type :typesList="types" />
             <Stats :statsList="stats" />
-            <GameIndices :games="game_indices"/>
+            <GameIndices :games="game_indices" />
             <Moves :moves="moves" />
           </div>
         </div>

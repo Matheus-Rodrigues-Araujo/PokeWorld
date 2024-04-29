@@ -9,7 +9,7 @@ const currentLanguage = inject('currentLanguage')
 <template>
   <div class="moves px-2 px-md-5 d-flex flex-column align-items-center">
     <h6 class="fs-4">
-      {{ $translate(`options.${currentLanguage}.modal.type`) }}
+      {{ $translate(`options.${currentLanguage}.modal.type.title`) }}
     </h6>
     <ul class="list-unstyled d-flex gap-1">
       <li

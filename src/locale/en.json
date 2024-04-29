@@ -1,53 +1,76 @@
 {
-    "sidebar": {
-      "myList": "My List",
-      "theme": "Theme"
-    },
-    "input": {
-      "label": "Name or Number"
-    },
-    "filters": {
-      "random": "Random Pokémon",
-      "sort": {
-        "label": "Sort By",
-        "options": {
-          "lowest": "Lowest Number",
-          "highest": "Highest Number",
-          "a_z": "A-Z",
-          "z_a": "Z-A"
-        }
+  "sidebar": {
+    "myList": "My List",
+    "theme": "Theme"
+  },
+  "input": {
+    "label": "Name or Number"
+  },
+  "filters": {
+    "random": "Random Pokémon",
+    "sort": {
+      "label": "Sort By",
+      "options": {
+        "lowest": "Lowest Number",
+        "highest": "Highest Number",
+        "a_z": "A-Z",
+        "z_a": "Z-A"
+      }
+    }
+  },
+  "modal": {
+    "title": "POKÉDATA",
+    "sprites": "Sprites",
+    "evolutions": "Evolutions",
+    "type": {
+      "title": "Type",
+      "type_list": {
+        "normal": "Normal",
+        "fighting": "Fighting",
+        "flying": "Flying",
+        "poison": "Poison",
+        "ground": "Ground",
+        "rock": "Rock",
+        "bug": "Bug",
+        "ghost": "Ghost",
+        "steel": "Steel",
+        "fire": "Fire",
+        "water": "Water",
+        "grass": "Grass",
+        "electric": "Electric",
+        "psychic": "Psychic",
+        "ice": "Ice",
+        "dragon": "Dragon",
+        "dark": "Dark",
+        "fairy": "Fairy",
+        "unknown": "Unknown",
+        "shadow": "Shadow"
       }
     },
-    "modal": {
-      "title": "POKÉDATA",
-      "sprites": "Sprites",
-      "evolutions": "Evolutions",
-      "type": "Type",
-      "stats": {
-        "title": "Stats",
-        "statsLabel": {
-          "hp": "HP",
-          "attack": "Attack",
-          "defense": "Defense",
-          "special-attack": "Special-Attack",
-          "special-defense": "Special-Defense",
-          "speed": "Speed"
-        }
-      },
-      "game_indices": {
-        "title": "Game Indices",
-        "button": {
-          "show_more": "Show more games",
-          "show_less": "Show less games"
-        }
-      },
-      "moves": {
-        "title": "Moves",
-        "button": {
-          "show_more": "Show more moves",
-          "show_less": "Show less moves"
-        }
+    "stats": {
+      "title": "Stats",
+      "statsLabel": {
+        "hp": "HP",
+        "attack": "Attack",
+        "defense": "Defense",
+        "special-attack": "Special-Attack",
+        "special-defense": "Special-Defense",
+        "speed": "Speed"
+      }
+    },
+    "game_indices": {
+      "title": "Game Indices",
+      "button": {
+        "show_more": "Show more games",
+        "show_less": "Show less games"
+      }
+    },
+    "moves": {
+      "title": "Moves",
+      "button": {
+        "show_more": "Show more moves",
+        "show_less": "Show less moves"
       }
     }
   }
-  
+}
