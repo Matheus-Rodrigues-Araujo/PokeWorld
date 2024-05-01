@@ -107,7 +107,11 @@ const togglePokedexData = () => {
           class="type rounded-1 px-2 fs-5 fw-medium"
           :class="typeItem.type.name"
         >
-          {{ typeItem.type.name }}
+          {{
+            $translate(
+              `options.${currentLanguage}.type.type_list.${typeItem.type.name}`
+            )
+          }}
         </li>
       </ul>
     </div>
