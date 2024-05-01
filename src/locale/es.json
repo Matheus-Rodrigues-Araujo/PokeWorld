@@ -80,7 +80,11 @@
         "heartgold": "oro corazón",
         "soulsilver": "plata alma",
         "black": "negro",
-        "white": "blanco",
+        "black-1": "negro 1",
+        "black-2": "negro 2",
+        "white": "white",
+        "white-1": "blanco 1",
+        "white-2": "blanco 2",
         "colosseum": "coliseo",
         "xd": "xd"
       },
