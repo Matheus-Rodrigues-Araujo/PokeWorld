@@ -54,18 +54,5 @@ watch(
   right: 0;
 }
 
-select {
-  background-color: black;
-  color: white;
-  border: none;
-}
 
-option {
-  background-color: var(--light-gray);
-  color: white;
-}
-
-i {
-  font-size: 20px;
-}
 </style>

@@ -1,25 +1,27 @@
 <script setup>
-import Sidebar from "./Sidebar.vue";
-import { ref } from "vue";
+import { inject, watch } from "vue";
+const currentLanguage = inject("currentLanguage");
 
-const showSidebar = ref(false);
-
-const toggleSidebar = () => {
-  showSidebar.value = !showSidebar.value;
-};
+watch(
+  currentLanguage,
+  (newLocale) => {
+    currentLanguage.value = newLocale;
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
-  <header class="position-fixed w-100 z-3" style="height: 60px">
-    <nav class="d-flex justify-content-between px-5 align-items-center">
+  <header class="position-fixed d-flex flex-column justify-content-center w-100 z-3" style="height: 60px">
+    <nav class="d-flex justify-content-between px-5 w-100">
       <a
         href="/"
-        class="text-white fs-3 text-uppercase fw-bold text-decoration-none d-flex align-items-center"
+        class="text-white fs-5 text-uppercase fw-bold text-decoration-none d-flex align-items-center"
       >
         <svg
           fill="white"
-          width="40px"
-          height="60px"
+          width="30px"
+          height="50px"
           viewBox="0 0 512 512"
           data-name="Layer 1"
           id="Layer_1"
@@ -32,16 +34,19 @@ const toggleSidebar = () => {
         </svg>
         PokéWorld
       </a>
-      <div style="cursor: pointer" @click="toggleSidebar">
-        <i v-if="!showSidebar" class="bi bi-list text-white"></i>
-        <span v-else>X</span>
-      </div>
+
+      <li class="d-flex align-items-center gap-1 mx-3">
+        <i class="bi bi-globe-americas text-white fs-5"></i>
+        <label for="selectLanguage">
+          <select id="selectLanguage" v-model="currentLanguage" style="width: 100px;"  >
+            <option value="pt-BR">Português</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+          </select>
+        </label>
+      </li>
     </nav>
   </header>
-  <Sidebar
-    v-if="showSidebar"
-    isSidebarVisible="showSidebar"
-  />
 </template>
 
 <style>
@@ -57,6 +62,16 @@ nav {
 i,
 span {
   font-size: 32px;
+  color: white;
+}
+
+select {
+  background-color: var(--custom-red);
+  color: white;
+  border: none;
+}
+option {
+  background-color: var(--light-gray);
   color: white;
 }
 </style>
