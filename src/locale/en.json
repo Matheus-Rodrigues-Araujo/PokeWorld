@@ -60,6 +60,30 @@
     },
     "game_indices": {
       "title": "Game Indices",
+      "index": "Index",
+      "version": "Version",
+      "games": {
+        "red": "red",
+        "blue": "blue",
+        "yellow": "yellow",
+        "gold": "gold",
+        "silver": "silver",
+        "crystal": "crystal",
+        "ruby": "ruby",
+        "sapphire": "sapphire",
+        "emerald": "emerald",
+        "firered": "fire red",
+        "leafgreen": "leaf green",
+        "diamond": "diamond",
+        "pearl": "pearl",
+        "platinum": "platinum",
+        "heartgold": "heart gold",
+        "soulsilver": "soul silver",
+        "black": "black",
+        "white": "white",
+        "colosseum": "colosseum",
+        "xd": "xd"
+      },
       "button": {
         "show_more": "Show more games",
         "show_less": "Show less games"

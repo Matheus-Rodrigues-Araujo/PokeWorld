@@ -60,6 +60,30 @@
     },
     "game_indices": {
       "title": "Índices de Juegos",
+      "index": "Índice",
+      "version": "Versíon",
+      "games": {
+        "red": "rojo",
+        "blue": "azul",
+        "yellow": "amarillo",
+        "gold": "oro",
+        "silver": "plata",
+        "crystal": "cristal",
+        "ruby": "rubí",
+        "sapphire": "zafiro",
+        "emerald": "esmeralda",
+        "firered": "rojo fuego",
+        "leafgreen": "verde hoja",
+        "diamond": "diamante",
+        "pearl": "perla",
+        "platinum": "platino",
+        "heartgold": "oro corazón",
+        "soulsilver": "plata alma",
+        "black": "negro",
+        "white": "blanco",
+        "colosseum": "coliseo",
+        "xd": "xd"
+      },
       "button": {
         "show_more": "Mostrar más juegos",
         "show_less": "Mostrar menos juegos"

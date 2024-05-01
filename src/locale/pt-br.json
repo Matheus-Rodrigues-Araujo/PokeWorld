@@ -1,77 +1,100 @@
 {
-    "sidebar": {
-      "myList": "Minha Lista",
-      "theme": "Tema"
-    },
-    "input": {
-      "label": "Nome ou Número"
-    },
-    "filters": {
-      "random": "Pokémon Aleatório",
-      "sort": {
-        "label": "Ordenar Por",
-        "options": {
-          "lowest": "Menor Número",
-          "highest": "Maior Número",
-          "a_z": "A-Z",
-          "z_a": "Z-A"
-        }
+  "sidebar": {
+    "myList": "Minha Lista",
+    "theme": "Tema"
+  },
+  "input": {
+    "label": "Nome ou Número"
+  },
+  "filters": {
+    "random": "Pokémon Aleatório",
+    "sort": {
+      "label": "Ordenar Por",
+      "options": {
+        "lowest": "Menor Número",
+        "highest": "Maior Número",
+        "a_z": "A-Z",
+        "z_a": "Z-A"
+      }
+    }
+  },
+  "type": {
+    "title": "Tipo",
+    "type_list": {
+      "normal": "Normal",
+      "fighting": "Lutador",
+      "flying": "Voador",
+      "poison": "Veneno",
+      "ground": "Terra",
+      "rock": "Pedra",
+      "bug": "Inseto",
+      "ghost": "Fantasma",
+      "steel": "Aço",
+      "fire": "Fogo",
+      "water": "Água",
+      "grass": "Grama",
+      "electric": "Elétrico",
+      "psychic": "Psíquico",
+      "ice": "Gelo",
+      "dragon": "Dragão",
+      "dark": "Sombrio",
+      "fairy": "Fada",
+      "unknown": "Desconhecido",
+      "shadow": "Sombra"
+    }
+  },
+  "modal": {
+    "title": "POKÉDATA",
+    "sprites": "Designs",
+    "evolutions": "Evoluções",
+    "stats": {
+      "title": "Estatísticas",
+      "statsLabel": {
+        "hp": "HP",
+        "attack": "Ataque",
+        "defense": "Defesa",
+        "special-attack": "Ataque Especial",
+        "special-defense": "Defesa Especial",
+        "speed": "Velocidade"
       }
     },
-    "type": {
-      "title": "Tipo",
-      "type_list": {
-        "normal": "Normal",
-        "fighting": "Lutador",
-        "flying": "Voador",
-        "poison": "Veneno",
-        "ground": "Terra",
-        "rock": "Pedra",
-        "bug": "Inseto",
-        "ghost": "Fantasma",
-        "steel": "Aço",
-        "fire": "Fogo",
-        "water": "Água",
-        "grass": "Grama",
-        "electric": "Elétrico",
-        "psychic": "Psíquico",
-        "ice": "Gelo",
-        "dragon": "Dragão",
-        "dark": "Sombrio",
-        "fairy": "Fada",
-        "unknown": "Desconhecido",
-        "shadow": "Sombra"
+    "game_indices": {
+      "title": "Índices dos Jogos",
+      "index": "Índice",
+      "version": "Versão",
+      "games": {
+        "red": "vermelho",
+        "blue": "azul",
+        "yellow": "amarelo",
+        "gold": "ouro",
+        "silver": "prata",
+        "crystal": "cristal",
+        "ruby": "rubi",
+        "sapphire": "safira",
+        "emerald": "esmeralda",
+        "firered": "vermelho fogo",
+        "leafgreen": "verde folha",
+        "diamond": "diamante",
+        "pearl": "pérola",
+        "platinum": "platina",
+        "heartgold": "ouro coração",
+        "soulsilver": "prata alma",
+        "black": "preto",
+        "white": "branco",
+        "colosseum": "coliseu",
+        "xd": "xd"
+      },
+      "button": {
+        "show_more": "Mostrar mais jogos",
+        "show_less": "Mostrar menos jogos"
       }
     },
-    "modal": {
-      "title": "POKÉDATA",
-      "sprites": "Designs",
-      "evolutions": "Evoluções",
-      "stats": {
-        "title": "Estatísticas",
-        "statsLabel": {
-          "hp": "HP",
-          "attack": "Ataque",
-          "defense": "Defesa",
-          "special-attack": "Ataque Especial",
-          "special-defense": "Defesa Especial",
-          "speed": "Velocidade"
-        }
-      },
-      "game_indices": {
-        "title": "Índices dos Jogos",
-        "button": {
-          "show_more": "Mostrar mais jogos",
-          "show_less": "Mostrar menos jogos"
-        }
-      },
-      "moves": {
-        "title": "Movimentos",
-        "button": {
-          "show_more": "Mostrar mais movimentos",
-          "show_less": "Mostrar menos movimentos"
-        }
+    "moves": {
+      "title": "Movimentos",
+      "button": {
+        "show_more": "Mostrar mais movimentos",
+        "show_less": "Mostrar menos movimentos"
       }
     }
   }
-  
+}
