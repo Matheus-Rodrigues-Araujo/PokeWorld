@@ -1,6 +1,12 @@
 <script setup>
-import { inject, watch } from "vue";
+import { inject, watch, ref } from "vue";
+import Sidebar from "./Sidebar.vue";
 const currentLanguage = inject("currentLanguage");
+const showSidebar = ref(false);
+
+const toggleSidebar = () => {
+  showSidebar.value = !showSidebar.value;
+};
 
 watch(
   currentLanguage,
@@ -10,6 +16,7 @@ watch(
   { immediate: true }
 );
 </script>
+
 
 <template>
   <header class="position-fixed d-flex flex-column justify-content-center w-100 z-3" style="height: 60px">
@@ -35,7 +42,7 @@ watch(
         PokéWorld
       </a>
 
-      <li class="d-flex align-items-center gap-1 mx-3">
+      <li class="d-none d-md-flex align-items-center gap-1 mx-3">
         <i class="bi bi-globe-americas text-white fs-5"></i>
         <label for="selectLanguage">
           <select id="selectLanguage" v-model="currentLanguage" style="width: 100px;"  >
@@ -45,8 +52,17 @@ watch(
           </select>
         </label>
       </li>
+      <div style="cursor: pointer" @click="toggleSidebar">
+        <i v-if="!showSidebar" class="bi bi-list text-white"></i>
+        <span v-else>X</span>
+      </div>
     </nav>
   </header>
+  <Sidebar
+    v-if="showSidebar"
+    isSidebarVisible="showSidebar"
+  />
+
 </template>
 
 <style>

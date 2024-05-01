@@ -18,18 +18,6 @@ watch(
 <template>
   <div class="sidebar d-flex flex-column p-3 vh-100 position-fixed end-0 z-1">
     <ul class="nav nav-pills flex-column mb-auto">
-      <li>
-        <a href="#" class="nav-link text-white">
-          <i class="bi bi-bookmark-fill"></i>
-          {{ $translate(`options.${currentLanguage}.sidebar.myList`) }}
-        </a>
-      </li>
-      <li class="cursor-pointer">
-        <span href="#" class="nav-link text-white">
-          <i class="bi bi-brightness-high-fill"></i>
-          {{ $translate(`options.${currentLanguage}.sidebar.theme`) }}
-        </span>
-      </li>
       <li class="d-flex align-items-center gap-1 mx-3">
         <i class="bi bi-globe-americas text-white"></i>
         <label for="selectLanguage">
@@ -54,5 +42,7 @@ watch(
   right: 0;
 }
 
-
+.sidebar select {
+  background-color: black;
+}
 </style>
