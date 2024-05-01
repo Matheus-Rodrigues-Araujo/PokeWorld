@@ -42,7 +42,7 @@ watch(
         PokéWorld
       </a>
 
-      <li class="d-none d-md-flex align-items-center gap-1 mx-3">
+      <li class="d-none d-md-flex  align-items-center gap-1 mx-3">
         <i class="bi bi-globe-americas text-white fs-5"></i>
         <label for="selectLanguage">
           <select id="selectLanguage" v-model="currentLanguage" style="width: 100px;"  >
@@ -52,7 +52,7 @@ watch(
           </select>
         </label>
       </li>
-      <div style="cursor: pointer" @click="toggleSidebar">
+      <div class="d-flex d-md-none" style="cursor: pointer" @click="toggleSidebar">
         <i v-if="!showSidebar" class="bi bi-list text-white"></i>
         <span v-else>X</span>
       </div>
