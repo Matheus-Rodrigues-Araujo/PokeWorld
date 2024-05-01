@@ -1,25 +1,24 @@
 <script setup>
-import { inject } from 'vue';
+import { inject } from "vue";
 const props = defineProps({
-  statsList: Array
-})
-const currentLanguage = inject('currentLanguage')
-
+  statsList: Array,
+});
+const currentLanguage = inject("currentLanguage");
 </script>
 
 <template>
-  <div class="statistic px-2 px-md-5  align-items-center">
+  <div class="statistic px-2 px-md-5 align-items-center">
     <h6 class="fs-4 text-center">
       {{ $translate(`options.${currentLanguage}.modal.stats.title`) }}
     </h6>
-    <ul class="d-flex flex-column list-unstyled" style="gap: 2px;" >
-      <li
-        v-for="stat in statsList"
-        class="stat-item"
-      >
-        <span
-          class="fw-medium text-uppercase"
-          >{{ stat.stat.name }}
+    <ul class="d-flex flex-column list-unstyled" style="gap: 2px">
+      <li v-for="stat in statsList" class="stat-item">
+        <span class="fw-medium text-uppercase">
+          {{
+            $translate(
+              `options.${currentLanguage}.modal.stats.labels.${stat.stat.name}`
+            )
+          }}
         </span>
         <div class="percentage w-100">
           <div
@@ -28,26 +27,24 @@ const currentLanguage = inject('currentLanguage')
               width: `${stat.base_stat}%`,
               backgroundColor: 'cyan',
             }"
-          >
+          ></div>
         </div>
-      </div>
       </li>
     </ul>
   </div>
 </template>
 
 <style>
-.stat-item{
+.stat-item {
   display: grid;
   grid-template-columns: auto 60%;
   gap: 2px;
 }
 
-.stat-item span{
+.stat-item span {
   font-size: 12px;
   color: white;
   padding-left: 5px;
   background-color: var(--light-gray);
 }
-
 </style>

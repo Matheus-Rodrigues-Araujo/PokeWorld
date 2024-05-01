@@ -49,7 +49,7 @@
     "evolutions": "Evoluciones",
     "stats": {
       "title": "Estadísticas",
-      "statsLabel": {
+      "labels": {
         "hp": "PS",
         "attack": "Ataque",
         "defense": "Defensa",
