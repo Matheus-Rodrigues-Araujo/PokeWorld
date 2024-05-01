@@ -22,12 +22,16 @@ const count = ref(12);
       </li>
     </ul>
     <button
-      class="w-50 p-2 mx-auto mt-3 text-white fs-5 fw-bold border-0 rounded-1"
+      class="w-50 p-2 mx-auto mt-3 text-white fs-6 fw-bold border-0 rounded-1"
       @click="count < props.moves.length ? (count += 8) : (count = 12)"
       v-if="props.moves.length > 20"
       style="background-color: var(--custom-red)"
     >
-      {{ count < props.moves.length ? "Show more moves" : "Show less" }}
+      {{ count < props.moves.length ? 
+      $translate(`options.${currentLanguage}.modal.moves.button.show_more`)
+      : 
+      $translate(`options.${currentLanguage}.modal.moves.button.show_less`)
+       }}
     </button>
   </div>
 </template>

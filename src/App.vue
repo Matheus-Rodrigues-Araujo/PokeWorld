@@ -9,26 +9,28 @@ import PokemonList from "./components/PokemonList.vue";
 import { i18n } from "./main";
 const searchValue = ref("");
 const pokemonsList = ref([]);
-const translation = reactive(i18n)
-const currentLanguage = ref('en')
+const translation = reactive(i18n);
+const currentLanguage = ref("en");
 
 provide("searchValue", searchValue);
 provide("pokemonsList", pokemonsList);
 provide("translation", translation);
-provide("currentLanguage", currentLanguage )
+provide("currentLanguage", currentLanguage);
 </script>
 
 <template>
-  <Header />
-  <main>
-    <SearchInput />
-    <AdvancedSearch />
-    <div class="pokedex-content d-flex flex-column justify-content-center">
-      <Filters />
-      <PokemonList />
-    </div>
-  </main>
-  <Footer />
+  <div class="app-container" >
+    <Header />
+    <main>
+      <SearchInput />
+      <AdvancedSearch />
+      <div class="pokedex-content d-flex flex-column justify-content-center">
+        <Filters />
+        <PokemonList />
+      </div>
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <style scoped>
@@ -42,4 +44,5 @@ main {
   max-width: 1100px;
   margin-inline: auto;
 }
+
 </style>

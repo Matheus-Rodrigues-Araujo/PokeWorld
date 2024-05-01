@@ -23,12 +23,16 @@ const count = ref(8)
       </li>
     </ul>
     <button
-      class="w-50 p-2 mx-auto mt-3 text-white fs-5 fw-bold border-0 rounded-1"
+      class="w-50 p-2 mx-auto mt-3 text-white fs-6 fw-bold border-0 rounded-1"
       @click="count < props.games.length ? (count += 4) : (count = 8)"
       v-if="props.games.length > 12"
       style="background-color: var(--custom-red)"
     >
-      {{ count < props.games.length ? "Show more games" : "Show less" }}
+      {{ count < props.games.length ? 
+      $translate(`options.${currentLanguage}.modal.game_indices.button.show_more`)
+       : 
+      $translate(`options.${currentLanguage}.modal.game_indices.button.show_less`)
+      }}
     </button>
   </div>
 </template>
