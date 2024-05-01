@@ -7,6 +7,7 @@ import Type from "./ModalElements/Type.vue";
 import Sprites from "./ModalElements/Sprites.vue";
 import { inject, ref } from "vue";
 const currentLanguage = inject("currentLanguage");
+import getTranslatedName from "../utils/getTranslatedName";
 const translatedName = ref("");
 
 const props = defineProps({
@@ -22,30 +23,13 @@ const {
   types,
   stats,
   moves,
-  // species,
   evolution_chain,
   translations,
   sprites,
   game_indices,
 } = props?.pokemon;
 
-const getTranslatedName = () => {
-  try {
-    const translation = translations.filter((item) => {
-      if (item.language.name === currentLanguage.value) {
-        return item.name;
-      }
-    });
-    if (!translation.length) {
-      return name;
-    }
-    return translation[0].name;
-  } catch (error) {
-    console.error("error", error);
-  }
-};
-
-translatedName.value = getTranslatedName();
+translatedName.value = getTranslatedName(name, translations, currentLanguage);
 </script>
 
 <template>

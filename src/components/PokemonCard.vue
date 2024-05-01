@@ -2,14 +2,20 @@
 import PokemonModal from "./PokemonModal.vue";
 import axios from "axios";
 import Loading from "./Loading.vue";
+
 import { inject, onMounted, reactive, ref } from "vue";
+const currentLanguage = inject("currentLanguage");
+
+import getTranslatedName from "../utils/getTranslatedName";
 import getPokemonData from "../utils/getPokemonData";
+
 const props = defineProps({
   name: String,
 });
 
 const showPokedexData = ref(false);
 const pokemon = reactive({});
+const translatedName = ref("");
 const isLoading = ref(true);
 const pokemonsList = inject("pokemonsList");
 
@@ -32,10 +38,15 @@ const savePokemon = async () => {
           item.language.name === "es" ||
           item.language.name === "pt-BR"
       );
-      pokemonData.translations = translations
-      pokemonData.evolution_chain = evolution_chain
-      pokemon.value = pokemonData
-      pokemonsList.value.push(pokemon.value)
+      pokemonData.translations = translations;
+      pokemonData.evolution_chain = evolution_chain;
+      pokemon.value = pokemonData;
+      translatedName.value = getTranslatedName(
+        pokemon.name,
+        translations,
+        currentLanguage
+      );
+      pokemonsList.value.push(pokemon.value);
     }
   } catch (error) {
     console.error("error", error);
@@ -85,9 +96,11 @@ const togglePokedexData = () => {
       />
     </div>
     <div
-      class="card-info rounded-bottom py-2 px-2 d-flex justify-content-between align-items-center"
+      class="card-info rounded-bottom py-2 px-2 d-flex flex-column justify-content-between"
     >
-      <h4 class="text-white text-capitalize">{{ pokemon.value?.name }}</h4>
+      <h4 class="text-white text-capitalize fs-5">
+        {{ translatedName }}
+      </h4>
       <ul class="list-unstyled d-flex gap-1">
         <li
           v-for="typeItem in pokemon.value?.types"
