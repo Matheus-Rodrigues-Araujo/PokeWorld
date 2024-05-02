@@ -23,7 +23,7 @@ provide("currentLanguage", currentLanguage);
     <Header />
     <main>
       <SearchInput />
-      <div class="poked'ex-content d-flex flex-column justify-content-center">
+      <div class="pokedex-content d-flex flex-column justify-content-center">
         <PokemonList />
       </div>
     </main>
